@@ -1,0 +1,61 @@
+﻿@model IEnumerable<_69zg.Models.C_directories>
+@{ Layout = null;
+    int i = 0;
+    }
+<p>
+    <a href="javascript:void(0)" onclick="linkliselelct('AddDirectory')">新增名录</a>
+</p>
+<table class="table">
+    <tr>
+        <th style="width:118px">
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th style="width:88px">
+            @Html.DisplayNameFor(model => model.source)
+        </th>
+        <th style="width:108px">
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.explain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.character)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.other)
+        </th>
+        <th style="width:128px"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    i++;
+    <tr style="background-color:rgba(@(i%2==0?"211,211,211,0.7":""))">
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.source)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.explain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.character)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.other)
+        </td>
+        <td>
+            <a href="javascript:void(0)" onclick="ContractOpt('@item.id','TAHBOA','EditDirectory')">编辑</a> |
+            <a href="javascript:void(0)" onclick="ContractOpt('@item.id','TAHBOA','DetailDirectory')">详细</a> |
+            <a href="javascript:void(0)" onclick="ContractOpt('@item.id','TAHBOA','DelDirectory','@item.id')">删除</a>
+
+        </td>
+    </tr>
+}
+
+</table>

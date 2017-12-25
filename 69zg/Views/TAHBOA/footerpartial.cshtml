@@ -1,0 +1,17 @@
+﻿@using System.Collections
+@{
+    Hashtable week = new Hashtable();
+    week.Add("Friday", "五");
+    week.Add("Monday", "一");
+    week.Add("Saturday", "六");
+    week.Add("Sunday", "日");
+    week.Add("Thursday", "四");
+    week.Add("Tuesday", "二");
+    week.Add("Wednesday", "三");
+   
+}
+@Scripts.Render("~/sCripts/69zg/TAHBOA.JS")
+@Styles.Render("~/CONTENT/69zg/TAHBOA.CSS")
+<div  style="background-color:#0094ff;width:64%;float:left;color:ghostwhite;padding-left:36%">
+    当前日期：@(DateTime.Now.Date.ToString("yyyy年MM月dd日 星期")+ week[DateTime.Now.DayOfWeek.ToString()])&nbsp;<span id="currenttime"></span>
+</div>

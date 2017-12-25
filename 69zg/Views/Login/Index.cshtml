@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Login";
+    string url = ViewBag.url;
+}
+
+<html>
+<head>
+    <title>
+        用户登录
+    </title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/common.js"></script>
+</head>
+<body style="background-image: url('@Url.Content("Images/bg/logBG.jpg")');background-size:cover; width: 99%; height: 99%">
+    <div style="height:40%;">
+        <script>
+            $(function () {
+                verifyvalue= $("#verfiy").next("label").click().html();
+            });
+        var app = '@Request.ApplicationPath';
+        if (app.charAt(app.length - 1) == '/') app = app.substr(0, app.length - 1);
+        var verifyvalue = "2321";
+            function VerifyChange(obj) {
+                verifyvalue = Math.random().toString();
+                verifyvalue = verifyvalue.substr(verifyvalue.indexOf(".")+1, 4);
+                $(obj).html(verifyvalue);
+            };
+            function login()
+            {
+                if (verifyvalue == $("#verfiy").val())
+                {
+                    $.ajax({
+                        url: app + "/login/LOGIN" ,
+                        data: { uname: $("#username").val(), upd: $("#upd").val(), sourceurl: '@HttpUtility.UrlEncode(url)' },
+                        type: "post",
+                        datatype:"json",
+                        success: function (data) {
+                            if (data[0] == "SUCCESS")
+                            {
+                                window.location =data[1] == "" ? "./TAHBOA/index" : decodeURI(data[1]);
+                            } else {
+                                verifyvalue = $("#verfiy").next("label").click().html();
+                                $.alert(data[2]);
+                            }
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+                else
+                {
+                    $.alert("验证码错误!");
+                }
+            }
+        </script>
+    </div>
+   <div>
+       <div style="width:62%;height:40%;float:left">
+       </div>
+       <div >
+           <table style="padding-left:20px;background-color:rgba(255, 0, 0,0.1);z-index:200;width:300px;height:150px;border-radius:25px">
+               <tr>
+                   <td>用户名：</td>
+                   <td><input type="text" id="username" /></td>
+               </tr>
+               <tr>
+                   <td>密码:</td>
+                   <td><input type="password" id="upd" name="upd"/></td>
+               </tr>
+               <tr>
+                   <td>验证码：</td>
+                   <td><input  type="text" id="verfiy" style="width:100px"/>
+                   <label style="font-weight:700;background-image:url('@Url.Content("niezlbuyogn/Images/bg/Vricatybg.png")');background-size:cover;color:white;cursor:pointer" id="adf"  onclick="VerifyChange(this)">2321</label>
+                   </td>
+               </tr>
+               <tr>
+                   <td></td>
+                   <td>
+                       <input type="button" value="登 录" onclick="login()" style="width:100px;background-color:rgba(0, 255, 255,0.2)" />
+                   </td>
+               </tr>
+           </table>
+       </div>
+   </div>
+</body>
+</html>
+

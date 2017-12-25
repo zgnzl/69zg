@@ -1,0 +1,243 @@
+﻿@using _69zg.Models;
+@model _69zg.Models.合同记录
+@using _69zg.DBManager
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" id="addContract">
+        <h4>添加合同记录</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.合同类别, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+           <select name="合同类别">
+               @foreach (合同类别 mod in  MSSQLManager.GetDmodel().合同类别)
+               {
+                <option value="@mod.id">@mod.name</option>
+               }
+           </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.合同区域, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="合同区域">
+                    @foreach (区域代码 mod in MSSQLManager.GetDmodel().区域代码)
+                    {
+                        <option value="@mod.id">@mod.area</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.合同编号, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.合同编号, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.合同编号, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.甲方, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.甲方, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.甲方, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.乙方, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.乙方, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.乙方, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.签订地点, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.签订地点, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.签订地点, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.签订时间, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.签订时间, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.签订时间, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.合同内容, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.合同内容, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.合同内容, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.合同生效日期, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.合同生效日期, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.合同生效日期, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.合同终止日期, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.合同终止日期, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.合同终止日期, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.到期提醒时间, htmlAttributes: new { @class = "control-label col-md-2" })
+            (单位：天，负数不提醒)
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.到期提醒时间, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.到期提醒时间, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.结束提醒日期, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.结束提醒日期, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.结束提醒日期, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.是否到期提醒, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="是否到期提醒">
+                        <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.甲方法人代表, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.甲方法人代表, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.甲方法人代表, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.已方法人代表, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.已方法人代表, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.已方法人代表, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.甲方联系人, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.甲方联系人, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.甲方联系人, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.乙方联系人, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.乙方联系人, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.乙方联系人, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.甲方联系电话, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.甲方联系电话, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.甲方联系电话, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.乙方联系电话, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.乙方联系电话, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.乙方联系电话, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.甲方传真, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.甲方传真, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.甲方传真, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.乙方传真, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.乙方传真, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.乙方传真, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.甲方邮箱, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.甲方邮箱, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.甲方邮箱, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.乙方邮箱, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.乙方邮箱, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.乙方邮箱, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.甲方注册地, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.甲方注册地, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.甲方注册地, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.乙方注册地, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.乙方注册地, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.乙方注册地, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.other, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.other, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.other, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="提交" class="btn btn-default" />
+                <input type="reset" value="重置" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

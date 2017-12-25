@@ -1,0 +1,51 @@
+﻿@model IEnumerable<_69zg.Models.区域代码>
+@{ Layout = null;}
+<p>
+    <a href="javascript:void(0)" onclick="linkliselelct('AddAreaCode')">新增区域代码</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            区域代码
+        </th>
+        <th>
+           区域名称
+        </th>
+        <th>
+          区域所属省份
+        </th>
+        <th>
+           区域所在城市
+        </th>
+        <th>
+           区域备注
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.province)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.other)
+        </td>
+        <td>
+            <a href="javascript:void(0)" onclick="ContractOpt('@item.id','TAHBOA','EditAreaCode')">编辑</a> |
+            @*<a href="javascript:void(0)" onclick="ContractOpt('@item.id','TAHBOA','DetailAreaCode')">详细</a> |*@
+            <a href="javascript:void(0)" onclick="ContractOpt('@item.id','TAHBOA','DelAreaCode','@item.id')">删除</a>
+        </td>
+    </tr>
+}
+
+</table>

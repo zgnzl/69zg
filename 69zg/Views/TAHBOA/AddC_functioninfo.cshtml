@@ -1,0 +1,92 @@
+﻿@using _69zg.Models;
+@model _69zg.Models.C_functioninfo
+@using _69zg.DBManager
+
+@using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(),FormMethod.Get,htmlAttributes:new {@target="function" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>添加功能</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("名称", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger textred" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("显示名称", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.displayname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.displayname, "", new { @class = "text-danger textred" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("控制器名称", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Label(ViewContext.RouteData.Values["controller"].ToString())
+                @Html.ValidationMessageFor(model => model.controllername, "", new { @class = "text-danger textred" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("方法名称", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.actionname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.actionname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("功能描述", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("父节点", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> selectlist = new List<SelectListItem>();
+                    List<C_functioninfo> listF = MSSQLManager.GetDmodel().C_functioninfo.Where(c => c.level == 0).ToList();
+                    foreach (C_functioninfo list in listF)
+                    {
+                        SelectListItem item = new SelectListItem();
+                        item.Value = list.id.ToString();
+                        item.Text = list.displayname;
+                        selectlist.Add(item);
+                    }
+                }
+                @Html.DropDownListFor(model => model.fatherid, selectlist, "……请选择……")
+                @Html.ValidationMessageFor(model => model.fatherid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("功能级别")
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.level, "0", new { @groupname = "level" })
+                @Html.Label("根目录")
+                @Html.RadioButtonFor(model => model.level, "1", new { @groupname = "level", @checked = "checked" })
+                @Html.Label("子目录")
+                @Html.ValidationMessageFor(model => model.level, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="添加" class="btn btn-default" />
+                <input type="reset" value="重置" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+                    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

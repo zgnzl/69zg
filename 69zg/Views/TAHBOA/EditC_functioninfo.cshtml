@@ -1,0 +1,59 @@
+﻿@using _69zg.Models;
+@model _69zg.Models.C_functioninfo
+@using _69zg.DBManager
+@{
+    List<C_functioninfo> listfunction = MSSQLManager.GetDmodel().C_functioninfo.ToList();
+    List<C_functioninfo> listparent = listfunction.FindAll(c => c.level == 0);
+}
+<div>
+    <h4>修改功能模块</h4>
+    <hr />
+    <dl class="dl-horizontal" id="editfunction">
+        @foreach (C_functioninfo pfunction in listparent)
+        {
+            <dt style="background-color:rgba(0, 148, 255,0.3); line-height: 30px; padding-left: 10px; color: white;">
+                @Html.DisplayName(pfunction.displayname)
+            </dt>
+            <dd>
+                <table>
+                    <thead>
+                        <tr>
+                            <td style="width:150px">功能名称</td>
+                            <td style="width:360px">功能描述</td>
+                            <td style="width:150px">控制器名称</td>
+                            <td style="width:150px">方法名称</td>
+                            <td style="width:150px">父目录</td>
+                            <td style="width:200px">操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (C_functioninfo cfunction in listfunction.FindAll(c => c.fatherid == pfunction.id))
+                        {
+                            <tr id="@cfunction.id">
+                                <td><input id="@(cfunction.id+"_displayname")" value="@cfunction.displayname.Trim(' ')" /></td>
+                                <td><input id="@(cfunction.id+"_description")"  style="width:360px;" value="@(cfunction.description ?? "……")" /></td>
+                                <td><input style="border-bottom:0px" value="@(string.IsNullOrEmpty(cfunction.controllername)?"":cfunction.controllername.Trim(' '))" readonly /></td>
+                                <td><input id="@(cfunction.id+"_actionname")"  value="@(string.IsNullOrEmpty(cfunction.actionname)?"":cfunction.actionname.Trim(' '))" /></td>
+                                <td><select  id="@(cfunction.id+"_fatherid")"  >
+                                    @foreach (C_functioninfo cpfunction in listparent)
+                                    {
+                                        if (cpfunction.id == cfunction.fatherid)
+                                        {
+                                            <option value="@cpfunction.id" selected>@cpfunction.displayname</option>
+                                        }
+                                        else
+                                        {
+                                        <option value="@cpfunction.id">@cpfunction.displayname</option>
+                                        }
+                                    }
+                                    </select></td>
+                                <td><a href="javascript:void(0)" onclick="Updfunctioninfo(@cfunction.id)">更新</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </dd>
+        }
+    </dl>
+</div>

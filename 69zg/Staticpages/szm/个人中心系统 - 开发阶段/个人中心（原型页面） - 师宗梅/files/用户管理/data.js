@@ -1,0 +1,65 @@
+﻿$axure.loadCurrentPage({
+  "url":"用户管理.html",
+  "generationDate":new Date(1489416226003.05),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable"],
+  "page":{
+    "packageId":"deea79aa0abf4afc826989787592cddd",
+    "type":"Axure:Page",
+    "name":"用户管理",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"center",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"center",
+      "imageVerticalAlignment":"center",
+      "imageRepeat":"auto",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"应用字体",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"00845747e0c647a19a68e906d2fdd3e8",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "size":{
+              "width":1086,
+              "height":644}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"a20004a6307143998a13dccf613a40ba",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "size":{
+                  "width":1086,
+                  "height":644}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/用户管理/u0.png"}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "00845747e0c647a19a68e906d2fdd3e8":{
+      "scriptId":"u0"},
+    "a20004a6307143998a13dccf613a40ba":{
+      "scriptId":"u1"}}});

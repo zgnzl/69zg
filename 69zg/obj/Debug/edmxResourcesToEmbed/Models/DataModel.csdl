@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="zgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C_directories">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="source" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="source" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="explain" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="character" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_freedirectories">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="typeorcode" />
+      <PropertyRef Name="explain" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="typeorcode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="explain" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="freelink" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="freewhere" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="freecontent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_functioninfo">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="displayname" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="actionname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="controllername" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="fatherid" Type="Int32" />
+    <Property Name="level" Type="Int32" />
+  </EntityType>
+  <EntityType Name="C_roleinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="functionids" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="C_userinfo">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="pwd" />
+      <PropertyRef Name="regtime" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="realname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="pwd" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="regtime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="endtime" Type="DateTime" Precision="3" />
+    <Property Name="lastlogdate" Type="DateTime" Precision="3" />
+    <Property Name="phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="uid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="online" Type="Byte" />
+    <Property Name="userlock" Type="Byte" />
+    <Property Name="roleid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="statisticsLog">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="useruid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ip" Type="Int32" Nullable="false" />
+    <Property Name="datetime" Type="DateTime" Precision="3" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="descprition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="statisticsUser">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="username" />
+      <PropertyRef Name="userpwd" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="userpwd" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="useruid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="regtime" Type="DateTime" Precision="0" />
+    <Property Name="endtime" Type="DateTime" Precision="0" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="仓库记录">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="source" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="explain" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="仓库转移类别" Type="Int32" />
+    <Property Name="入仓库时间" Type="DateTime" Precision="3" />
+    <Property Name="出仓库时间" Type="DateTime" Precision="3" />
+    <Property Name="转移出去时间" Type="DateTime" Precision="3" />
+    <Property Name="转移连单编号" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="来源企业名称" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="转移到企业名称" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="登记人" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="登记日志" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="车辆情况" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="车辆照片" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="数量" Type="Int32" />
+    <Property Name="数量单位" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="存储位置" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ohter" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="仓库转移类别">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="合同记录">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="合同区域" Type="Int32" />
+    <Property Name="合同类别" Type="Int32" />
+    <Property Name="合同编号" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="甲方" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="乙方" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="签订地点" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="签订时间" Type="DateTime" Precision="3" />
+    <Property Name="合同内容" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="合同生效日期" Type="DateTime" Precision="3" />
+    <Property Name="合同终止日期" Type="DateTime" Precision="3" />
+    <Property Name="到期提醒时间" Type="DateTime" Precision="3" />
+    <Property Name="结束提醒日期" Type="DateTime" Precision="3" />
+    <Property Name="是否到期提醒" Type="Byte" />
+    <Property Name="甲方法人代表" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="已方法人代表" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="甲方联系人" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="乙方联系人" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="甲方联系电话" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+    <Property Name="乙方联系电话" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+    <Property Name="甲方传真" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="乙方传真" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="甲方邮箱" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="乙方邮箱" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="甲方注册地" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="乙方注册地" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="合同类别">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="code" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="区域代码">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="area" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="province" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="DataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C_directories" EntityType="Self.C_directories" />
+    <EntitySet Name="C_freedirectories" EntityType="Self.C_freedirectories" />
+    <EntitySet Name="C_functioninfo" EntityType="Self.C_functioninfo" />
+    <EntitySet Name="C_roleinfo" EntityType="Self.C_roleinfo" />
+    <EntitySet Name="C_userinfo" EntityType="Self.C_userinfo" />
+    <EntitySet Name="statisticsLog" EntityType="Self.statisticsLog" />
+    <EntitySet Name="statisticsUser" EntityType="Self.statisticsUser" />
+    <EntitySet Name="仓库记录" EntityType="Self.仓库记录" />
+    <EntitySet Name="仓库转移类别" EntityType="Self.仓库转移类别" />
+    <EntitySet Name="合同记录" EntityType="Self.合同记录" />
+    <EntitySet Name="合同类别" EntityType="Self.合同类别" />
+    <EntitySet Name="区域代码" EntityType="Self.区域代码" />
+  </EntityContainer>
+</Schema>

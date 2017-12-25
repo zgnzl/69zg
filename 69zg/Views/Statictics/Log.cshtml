@@ -1,0 +1,74 @@
+﻿@model IEnumerable<_69zg.Models.statisticsLog>
+@{ Layout = null;
+    int i = 0;
+    }
+@if (Model == null)
+{
+    return;
+}
+<p>
+    总访问量：<strong>
+    @Html.Raw(Model.Count())
+    </ strong >
+</p>
+<table class="table">
+    <tr style="background-color:rgba(0, 148, 255,0.3);color:white">
+        <th style="width:218px;line-break:auto">
+            网址
+        </th>
+        <th>
+            客户IP
+        </th>
+        <th>
+            访问时间
+        </th>
+        <th>
+            标题
+        </th>
+        <th>
+            访问设备
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    string background = "rgba(0, 148, 255,0.3)";
+    if (i++ % 2 == 0)
+    {
+        background = "";
+    }
+    <tr style="background:@(background)">
+        <td>
+            @Html.DisplayFor(modelItem => item.url)
+        </td>
+        <td>
+            @{
+                string ip = item.ip.ToString();
+                int subfirst = 3;
+                if (ip.Length == 11)
+                {
+                    subfirst = 2;
+                }
+                if (ip.Length == 10)
+                {
+                    subfirst = 1;
+                }
+                @Html.Raw(string.Join(".", ip.Substring(0, subfirst), int.Parse(ip.Substring(3, 3)).ToString(), int.Parse(ip.Substring(6, 3)).ToString(), int.Parse(ip.Substring(9, 3)).ToString()))
+
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datetime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descprition)
+        </td>
+
+    </tr>
+}
+
+</table>
+             

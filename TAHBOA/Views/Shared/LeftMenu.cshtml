@@ -1,0 +1,100 @@
+﻿@using TAHB.Model
+@{
+    Layout = null;
+    List<_functioninfo> listfunction = ViewBag.listfunction;
+    List<_functioninfo> listparent = listfunction.FindAll(c => c.level == 0);
+    string roleids = ViewBag.roleinfo+",";
+}
+
+<div id="sidebar" class="nav-collapse ">
+    <!-- sidebar menu start-->
+    <ul class="sidebar-menu">
+        <li class="active">
+            <a class="" href="@ViewBag.homelink">
+                <i class="icon_house_alt"></i>
+                <span>主页</span>
+            </a>
+        </li>
+        @foreach (_functioninfo pfunction in listparent)
+        {
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>@pfunction.displayname</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    @foreach (_functioninfo cfunction in listfunction.FindAll(c => c.fatherid == pfunction.id))
+                    {
+                        if(roleids.Contains(cfunction.id+",")|| roleids=="*,")
+                        {
+                        <li><a class="" onclick="menuselect(this); return false;" actionname="@(string.IsNullOrEmpty(cfunction.actionname)?"":cfunction.actionname.Trim(' '))" controllername="@(string.IsNullOrEmpty(cfunction.controllername)?"":cfunction.controllername.Trim(' '))" title="@cfunction.description" href="javascript:void(0)">@cfunction.displayname</a></li>
+                        }
+                    }
+                </ul>
+            </li>
+        }
+        @*<li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_group"></i>
+                <span>用户管理</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="form_component.html">用户列表</a></li>
+                <li><a class="" href="form_validation.html">新增用户</a></li>
+                <li><a class="" href="form_validation.html">用户角色管理</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_rook"></i>
+                <span>角色管理</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="form_component.html">角色列表</a></li>
+                <li><a class="" href="form_validation.html">新增角色</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_document_alt"></i>
+                <span>市场业务</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="form_component.html">合同编码设置</a></li>
+                <li><a class="" href="form_validation.html">报价系统设置</a></li>
+                <li><a class="" href="form_component.html">危废查询设置</a></li>
+                <li><a class="" href="form_validation.html">业务审批权限设置</a></li>
+                <li><a class="" href="form_validation.html">设置合同到期提醒</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_document_alt"></i>
+                <span>财务业务</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="form_component.html">合同审批</a></li>
+                <li><a class="" href="form_validation.html">合同打印</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_document_alt"></i>
+                <span>物流运输</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="form_component.html">仓储路线规划</a></li>
+                <li><a class="" href="form_validation.html">仓储区规划</a></li>
+            </ul>
+        </li>*@
+
+    </ul>
+
+    <!-- sidebar menu end-->
+</div>

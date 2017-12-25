@@ -1,0 +1,38 @@
+﻿@using _69zg.DBManager;
+@using _69zg.Models;
+@{
+    ViewBag.Title = "泰安环保办公系统";// "泰安环保办公系统";
+    Layout = "~/Views/Shared/_LayoutTAHBOA.cshtml";
+    List<C_functioninfo> listfunction = MSSQLManager.GetDmodel().C_functioninfo.ToList();
+    List<C_functioninfo> listparent = listfunction.FindAll(c=>c.level==0);
+    bool first = true;
+}
+<style>
+    body {
+        background-image: url(Images/bg.jpg);
+        background-repeat: no-repeat;
+        background-position-x:right;
+        background-position-y:bottom;
+    }
+</style>
+<div>
+    <div id="leftnavi">
+        @*<span onclick="zhedie(this)" style="float: right;z-index: 2000;padding-right:3px; padding-top: 8px;color: red;cursor: pointer;top:50px"><</span>*@
+        @foreach (C_functioninfo pfunction in listparent)
+        {
+            <div onclick="ulfirst(this)" class="first"  title="@pfunction.description">@pfunction.displayname</div>
+            <div style="display: @(first?"block":"none")">
+                @foreach (C_functioninfo cfunction in listfunction.FindAll(c => c.fatherid == pfunction.id))
+                {
+                <span onclick="liselelct(this)" actionname="@(string.IsNullOrEmpty(cfunction.actionname)?"":cfunction.actionname.Trim(' '))" controllername="@(string.IsNullOrEmpty(cfunction.controllername)?"":cfunction.controllername.Trim(' '))" title="@cfunction.description">@cfunction.displayname</span>
+                }
+            </div>
+            first = false;
+        }
+    </div>
+    <div  style="width: 100%;">
+      <div id="leftcontent" style=" padding:13PX;margin-left:126px;padding-left:120px;">欢迎使用泰安环保办公系统</div>  
+
+    </div>
+</div>
+

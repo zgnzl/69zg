@@ -1,0 +1,52 @@
+﻿@model _69zg.Models.区域代码
+@{ Layout = null;}
+<div>
+    <h4>区域代码明细</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           区域代码
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+           区域名称
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.area)
+        </dd>
+
+        <dt>
+           区域所属省份
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+           区域所在城市
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+          区域备注
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.other)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="javascript:void(0)" onclick="ContractOpt('@Model.id','TAHBOA','EditAreaCode')">编辑</a> |
+    <a href="javascript:void(0)" onclick="linkliselelct('ListAreaCode')">返回</a>
+</p>

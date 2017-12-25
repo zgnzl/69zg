@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="北京" />
+    <meta name="description" content="北京" />
+    <meta charset="utf-8" http-equiv="content-type" content="text/html" />
+    @Html.Partial("~/views/shared/_PartialCommon.cshtml")
+</head>
+<body>
+    @Html.Partial("~/views/TAHBOA/headerpartial.cshtml")
+    <input hidden id="controllername" value="TAHBOA" />
+    <div style="display:inline">
+        @RenderBody()
+    </div>
+    @Html.Partial("~/views/TAHBOA/footerpartial.cshtml")
+</body>
+</html>

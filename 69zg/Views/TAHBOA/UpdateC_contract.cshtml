@@ -1,0 +1,32 @@
+﻿@using _69zg.Models;
+@model _69zg.Models.合同记录
+@using _69zg.DBManager
+<div class="form-horizontal" id="updateContract">
+    <h4>更新合同记录</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-10">
+            合同类别：
+            <select name="合同类别" id="contract_type" >
+                @foreach (合同类别 mod in MSSQLManager.GetDmodel().合同类别)
+                {
+                    <option value="@mod.id">@mod.name</option>
+                }
+            </select>
+            合同区域：
+            <select name="合同区域" id="contract_area">
+                @foreach (区域代码 mod in MSSQLManager.GetDmodel().区域代码)
+                {
+                    <option value="@mod.id">@mod.area</option>
+                }
+            </select>
+            合同编号：<input type="text" id="contract_id"/>
+            乙方：<input type="text" id="contract_yf" />
+            <input type="button" value="查询" onclick="Getlistcontract()" />
+        </div>
+    </div>
+</div>
+<div id="contract_list">
+
+</div>

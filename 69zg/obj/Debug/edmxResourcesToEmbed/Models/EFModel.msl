@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="zgModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="C_directories">
+      <EntityTypeMapping TypeName="zgModel.C_directories">
+        <MappingFragment StoreEntitySet="_directories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="explain" ColumnName="explain" />
+          <ScalarProperty Name="character" ColumnName="character" />
+          <ScalarProperty Name="other" ColumnName="other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_freedirectories">
+      <EntityTypeMapping TypeName="zgModel.C_freedirectories">
+        <MappingFragment StoreEntitySet="_freedirectories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeorcode" ColumnName="typeorcode" />
+          <ScalarProperty Name="explain" ColumnName="explain" />
+          <ScalarProperty Name="freelink" ColumnName="freelink" />
+          <ScalarProperty Name="freewhere" ColumnName="freewhere" />
+          <ScalarProperty Name="freecontent" ColumnName="freecontent" />
+          <ScalarProperty Name="other" ColumnName="other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_functioninfo">
+      <EntityTypeMapping TypeName="zgModel.C_functioninfo">
+        <MappingFragment StoreEntitySet="_functioninfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="displayname" ColumnName="displayname" />
+          <ScalarProperty Name="actionname" ColumnName="actionname" />
+          <ScalarProperty Name="controllername" ColumnName="controllername" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="fatherid" ColumnName="fatherid" />
+          <ScalarProperty Name="level" ColumnName="level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_roleinfo">
+      <EntityTypeMapping TypeName="zgModel.C_roleinfo">
+        <MappingFragment StoreEntitySet="_roleinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="functionids" ColumnName="functionids" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_userinfo">
+      <EntityTypeMapping TypeName="zgModel.C_userinfo">
+        <MappingFragment StoreEntitySet="_userinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="realname" ColumnName="realname" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="regtime" ColumnName="regtime" />
+          <ScalarProperty Name="endtime" ColumnName="endtime" />
+          <ScalarProperty Name="lastlogdate" ColumnName="lastlogdate" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="online" ColumnName="online" />
+          <ScalarProperty Name="userlock" ColumnName="userlock" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statisticsLog">
+      <EntityTypeMapping TypeName="zgModel.statisticsLog">
+        <MappingFragment StoreEntitySet="statisticsLog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="useruid" ColumnName="useruid" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="descprition" ColumnName="descprition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statisticsUser">
+      <EntityTypeMapping TypeName="zgModel.statisticsUser">
+        <MappingFragment StoreEntitySet="statisticsUser">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userpwd" ColumnName="userpwd" />
+          <ScalarProperty Name="useruid" ColumnName="useruid" />
+          <ScalarProperty Name="regtime" ColumnName="regtime" />
+          <ScalarProperty Name="endtime" ColumnName="endtime" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="仓库记录">
+      <EntityTypeMapping TypeName="zgModel.仓库记录">
+        <MappingFragment StoreEntitySet="仓库记录">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="explain" ColumnName="explain" />
+          <ScalarProperty Name="仓库转移类别" ColumnName="仓库转移类别" />
+          <ScalarProperty Name="入仓库时间" ColumnName="入仓库时间" />
+          <ScalarProperty Name="出仓库时间" ColumnName="出仓库时间" />
+          <ScalarProperty Name="转移出去时间" ColumnName="转移出去时间" />
+          <ScalarProperty Name="转移连单编号" ColumnName="转移连单编号" />
+          <ScalarProperty Name="来源企业名称" ColumnName="来源企业名称" />
+          <ScalarProperty Name="转移到企业名称" ColumnName="转移到企业名称" />
+          <ScalarProperty Name="登记人" ColumnName="登记人" />
+          <ScalarProperty Name="登记日志" ColumnName="登记日志" />
+          <ScalarProperty Name="车辆情况" ColumnName="车辆情况" />
+          <ScalarProperty Name="车辆照片" ColumnName="车辆照片" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="数量单位" ColumnName="数量单位" />
+          <ScalarProperty Name="存储位置" ColumnName="存储位置" />
+          <ScalarProperty Name="ohter" ColumnName="ohter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="仓库转移类别">
+      <EntityTypeMapping TypeName="zgModel.仓库转移类别">
+        <MappingFragment StoreEntitySet="仓库转移类别">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="other" ColumnName="other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="合同记录">
+      <EntityTypeMapping TypeName="zgModel.合同记录">
+        <MappingFragment StoreEntitySet="合同记录">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="合同区域" ColumnName="合同区域" />
+          <ScalarProperty Name="合同类别" ColumnName="合同类别" />
+          <ScalarProperty Name="合同编号" ColumnName="合同编号" />
+          <ScalarProperty Name="甲方" ColumnName="甲方" />
+          <ScalarProperty Name="乙方" ColumnName="乙方" />
+          <ScalarProperty Name="签订地点" ColumnName="签订地点" />
+          <ScalarProperty Name="签订时间" ColumnName="签订时间" />
+          <ScalarProperty Name="合同内容" ColumnName="合同内容" />
+          <ScalarProperty Name="合同生效日期" ColumnName="合同生效日期" />
+          <ScalarProperty Name="合同终止日期" ColumnName="合同终止日期" />
+          <ScalarProperty Name="到期提醒时间" ColumnName="到期提醒时间" />
+          <ScalarProperty Name="结束提醒日期" ColumnName="结束提醒日期" />
+          <ScalarProperty Name="是否到期提醒" ColumnName="是否到期提醒" />
+          <ScalarProperty Name="甲方法人代表" ColumnName="甲方法人代表" />
+          <ScalarProperty Name="已方法人代表" ColumnName="已方法人代表" />
+          <ScalarProperty Name="甲方联系人" ColumnName="甲方联系人" />
+          <ScalarProperty Name="乙方联系人" ColumnName="乙方联系人" />
+          <ScalarProperty Name="甲方联系电话" ColumnName="甲方联系电话" />
+          <ScalarProperty Name="乙方联系电话" ColumnName="乙方联系电话" />
+          <ScalarProperty Name="甲方传真" ColumnName="甲方传真" />
+          <ScalarProperty Name="乙方传真" ColumnName="乙方传真" />
+          <ScalarProperty Name="甲方邮箱" ColumnName="甲方邮箱" />
+          <ScalarProperty Name="乙方邮箱" ColumnName="乙方邮箱" />
+          <ScalarProperty Name="甲方注册地" ColumnName="甲方注册地" />
+          <ScalarProperty Name="乙方注册地" ColumnName="乙方注册地" />
+          <ScalarProperty Name="other" ColumnName="other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="合同类别">
+      <EntityTypeMapping TypeName="zgModel.合同类别">
+        <MappingFragment StoreEntitySet="合同类别">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="other" ColumnName="other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="区域代码">
+      <EntityTypeMapping TypeName="zgModel.区域代码">
+        <MappingFragment StoreEntitySet="区域代码">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="other" ColumnName="other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

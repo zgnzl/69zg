@@ -1,0 +1,41 @@
+﻿@model _69zg.Models.C_functioninfo
+@using _69zg.Models;
+@using _69zg.DBManager
+@{ 
+    List<C_functioninfo> listfunction = MSSQLManager.GetDmodel().C_functioninfo.ToList();
+    List<C_functioninfo> listparent = listfunction.FindAll(c => c.level == 0);
+}
+<div>
+    <h4>功能删除</h4>
+    <hr />
+    <dl class="dl-horizontal">
+@foreach (C_functioninfo pfunction in listparent)
+{
+    <dt style="background-color:rgba(0, 148, 255,0.3); line-height: 30px; padding-left: 10px; color: white;">
+        @Html.DisplayName(pfunction.displayname)
+    </dt>
+    <dd>
+            <table>
+                <thead>
+                    <tr>
+                        <td style="width:200px">功能名称</td>
+                        <td style="width:400px">功能描述</td>
+                        <td style="width:200px">操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (C_functioninfo cfunction in listfunction.FindAll(c => c.fatherid == pfunction.id))
+                    {
+                        <tr id="@cfunction.id">
+                            <td>@Html.DisplayName(cfunction.displayname)</td>
+                            <td>@Html.DisplayName(cfunction.description ?? "……")</td>
+                            <td><a href="javascript:void(0)" onclick="Delfunctioninfo(@cfunction.id)">删除</a></td>
+                        </tr>
+                    }
+                </tbody>
+                          </table>
+                  
+    </dd>
+}
+    </dl>
+</div>

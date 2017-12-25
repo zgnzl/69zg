@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="_directories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="source" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="20" />
+          <Property Name="explain" Type="nvarchar" MaxLength="500" />
+          <Property Name="character" Type="nchar" MaxLength="10" />
+          <Property Name="other" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="_freedirectories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeorcode" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="explain" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="freelink" Type="nchar" MaxLength="100" />
+          <Property Name="freewhere" Type="nvarchar" MaxLength="500" />
+          <Property Name="freecontent" Type="nvarchar" MaxLength="500" />
+          <Property Name="other" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="_functioninfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="displayname" Type="nchar" MaxLength="100" />
+          <Property Name="actionname" Type="nchar" MaxLength="30" />
+          <Property Name="controllername" Type="nchar" MaxLength="30" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="fatherid" Type="int" />
+          <Property Name="level" Type="int" />
+        </EntityType>
+        <EntityType Name="_roleinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="50" />
+          <Property Name="functionids" Type="varchar" MaxLength="500" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="_userinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="realname" Type="nchar" MaxLength="50" />
+          <Property Name="pwd" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="regtime" Type="datetime" Nullable="false" />
+          <Property Name="endtime" Type="datetime" />
+          <Property Name="lastlogdate" Type="datetime" />
+          <Property Name="phone" Type="nchar" MaxLength="11" />
+          <Property Name="tel" Type="nchar" MaxLength="13" />
+          <Property Name="email" Type="nchar" MaxLength="30" />
+          <Property Name="address" Type="nchar" MaxLength="100" />
+          <Property Name="uid" Type="nchar" MaxLength="100" />
+          <Property Name="online" Type="tinyint" />
+          <Property Name="userlock" Type="tinyint" />
+          <Property Name="roleid" Type="int" />
+        </EntityType>
+        <EntityType Name="statisticsLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="useruid" Type="nchar" MaxLength="100" />
+          <Property Name="url" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ip" Type="bigint" Nullable="false" />
+          <Property Name="datetime" Type="datetime" />
+          <Property Name="title" Type="nchar" MaxLength="100" />
+          <Property Name="descprition" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="statisticsUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="userpwd" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="useruid" Type="nchar" MaxLength="100" />
+          <Property Name="regtime" Type="date" />
+          <Property Name="endtime" Type="date" />
+          <Property Name="email" Type="nchar" MaxLength="30" />
+          <Property Name="tel" Type="nchar" MaxLength="20" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="仓库记录">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nchar" MaxLength="100" />
+          <Property Name="source" Type="nchar" MaxLength="100" />
+          <Property Name="explain" Type="nvarchar" MaxLength="500" />
+          <Property Name="仓库转移类别" Type="int" />
+          <Property Name="入仓库时间" Type="datetime" />
+          <Property Name="出仓库时间" Type="datetime" />
+          <Property Name="转移出去时间" Type="datetime" />
+          <Property Name="转移连单编号" Type="nchar" MaxLength="20" />
+          <Property Name="来源企业名称" Type="nvarchar" MaxLength="100" />
+          <Property Name="转移到企业名称" Type="nvarchar" MaxLength="100" />
+          <Property Name="登记人" Type="nchar" MaxLength="100" />
+          <Property Name="登记日志" Type="text" />
+          <Property Name="车辆情况" Type="text" />
+          <Property Name="车辆照片" Type="nvarchar" MaxLength="500" />
+          <Property Name="数量" Type="int" />
+          <Property Name="数量单位" Type="nchar" MaxLength="10" />
+          <Property Name="存储位置" Type="nvarchar" MaxLength="500" />
+          <Property Name="ohter" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="仓库转移类别">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="other" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="合同记录">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="合同区域" Type="int" />
+          <Property Name="合同类别" Type="int" />
+          <Property Name="合同编号" Type="nchar" MaxLength="20" />
+          <Property Name="甲方" Type="nvarchar" MaxLength="100" />
+          <Property Name="乙方" Type="nvarchar" MaxLength="100" />
+          <Property Name="签订地点" Type="nvarchar" MaxLength="500" />
+          <Property Name="签订时间" Type="datetime" />
+          <Property Name="合同内容" Type="text" />
+          <Property Name="合同生效日期" Type="datetime" />
+          <Property Name="合同终止日期" Type="datetime" />
+          <Property Name="到期提醒时间" Type="datetime" />
+          <Property Name="结束提醒日期" Type="datetime" />
+          <Property Name="是否到期提醒" Type="tinyint" />
+          <Property Name="甲方法人代表" Type="nvarchar" MaxLength="100" />
+          <Property Name="已方法人代表" Type="nvarchar" MaxLength="100" />
+          <Property Name="甲方联系人" Type="nchar" MaxLength="100" />
+          <Property Name="乙方联系人" Type="nchar" MaxLength="100" />
+          <Property Name="甲方联系电话" Type="nchar" MaxLength="13" />
+          <Property Name="乙方联系电话" Type="nchar" MaxLength="13" />
+          <Property Name="甲方传真" Type="nchar" MaxLength="100" />
+          <Property Name="乙方传真" Type="nchar" MaxLength="100" />
+          <Property Name="甲方邮箱" Type="nchar" MaxLength="100" />
+          <Property Name="乙方邮箱" Type="nchar" MaxLength="100" />
+          <Property Name="甲方注册地" Type="nvarchar" MaxLength="100" />
+          <Property Name="乙方注册地" Type="nvarchar" MaxLength="100" />
+          <Property Name="other" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="合同类别">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="other" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="区域代码">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" />
+          <Property Name="area" Type="nchar" MaxLength="100" />
+          <Property Name="province" Type="nchar" MaxLength="100" />
+          <Property Name="city" Type="nchar" MaxLength="100" />
+          <Property Name="other" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="_directories" EntityType="Self._directories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_freedirectories" EntityType="Self._freedirectories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_functioninfo" EntityType="Self._functioninfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_roleinfo" EntityType="Self._roleinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_userinfo" EntityType="Self._userinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statisticsLog" EntityType="Self.statisticsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statisticsUser" EntityType="Self.statisticsUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="仓库记录" EntityType="Self.仓库记录" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="仓库转移类别" EntityType="Self.仓库转移类别" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="合同记录" EntityType="Self.合同记录" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="合同类别" EntityType="Self.合同类别" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="区域代码" EntityType="Self.区域代码" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_directories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="source" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="explain" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="character" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="C_freedirectories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeorcode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="explain" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="freelink" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="freewhere" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="freecontent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="C_functioninfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="displayname" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="actionname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="controllername" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fatherid" Type="Int32" />
+          <Property Name="level" Type="Int32" />
+        </EntityType>
+        <EntityType Name="C_roleinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="functionids" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C_userinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="realname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="pwd" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="regtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="endtime" Type="DateTime" Precision="3" />
+          <Property Name="lastlogdate" Type="DateTime" Precision="3" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="uid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="online" Type="Byte" />
+          <Property Name="userlock" Type="Byte" />
+          <Property Name="roleid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="statisticsLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="useruid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ip" Type="Int64" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Precision="3" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="descprition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="statisticsUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="userpwd" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="useruid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="regtime" Type="DateTime" Precision="0" />
+          <Property Name="endtime" Type="DateTime" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="仓库记录">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="source" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="explain" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="仓库转移类别" Type="Int32" />
+          <Property Name="入仓库时间" Type="DateTime" Precision="3" />
+          <Property Name="出仓库时间" Type="DateTime" Precision="3" />
+          <Property Name="转移出去时间" Type="DateTime" Precision="3" />
+          <Property Name="转移连单编号" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="来源企业名称" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="转移到企业名称" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="登记人" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="登记日志" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="车辆情况" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="车辆照片" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="数量" Type="Int32" />
+          <Property Name="数量单位" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="存储位置" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ohter" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="仓库转移类别">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="合同记录">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="合同区域" Type="Int32" />
+          <Property Name="合同类别" Type="Int32" />
+          <Property Name="合同编号" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="甲方" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="乙方" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="签订地点" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="签订时间" Type="DateTime" Precision="3" />
+          <Property Name="合同内容" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="合同生效日期" Type="DateTime" Precision="3" />
+          <Property Name="合同终止日期" Type="DateTime" Precision="3" />
+          <Property Name="到期提醒时间" Type="DateTime" Precision="3" />
+          <Property Name="结束提醒日期" Type="DateTime" Precision="3" />
+          <Property Name="是否到期提醒" Type="Byte" />
+          <Property Name="甲方法人代表" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="已方法人代表" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="甲方联系人" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="乙方联系人" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="甲方联系电话" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="乙方联系电话" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="甲方传真" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="乙方传真" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="甲方邮箱" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="乙方邮箱" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="甲方注册地" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="乙方注册地" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="合同类别">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="区域代码">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="area" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="province" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="EntitiesSqlConnStr" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_directories" EntityType="Self.C_directories" />
+          <EntitySet Name="C_freedirectories" EntityType="Self.C_freedirectories" />
+          <EntitySet Name="C_functioninfo" EntityType="Self.C_functioninfo" />
+          <EntitySet Name="C_roleinfo" EntityType="Self.C_roleinfo" />
+          <EntitySet Name="C_userinfo" EntityType="Self.C_userinfo" />
+          <EntitySet Name="statisticsLog" EntityType="Self.statisticsLog" />
+          <EntitySet Name="statisticsUser" EntityType="Self.statisticsUser" />
+          <EntitySet Name="仓库记录" EntityType="Self.仓库记录" />
+          <EntitySet Name="仓库转移类别" EntityType="Self.仓库转移类别" />
+          <EntitySet Name="合同记录" EntityType="Self.合同记录" />
+          <EntitySet Name="合同类别" EntityType="Self.合同类别" />
+          <EntitySet Name="区域代码" EntityType="Self.区域代码" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="EntitiesSqlConnStr">
+          <EntitySetMapping Name="C_directories">
+            <EntityTypeMapping TypeName="Models.C_directories">
+              <MappingFragment StoreEntitySet="_directories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="explain" ColumnName="explain" />
+                <ScalarProperty Name="character" ColumnName="character" />
+                <ScalarProperty Name="other" ColumnName="other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_freedirectories">
+            <EntityTypeMapping TypeName="Models.C_freedirectories">
+              <MappingFragment StoreEntitySet="_freedirectories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typeorcode" ColumnName="typeorcode" />
+                <ScalarProperty Name="explain" ColumnName="explain" />
+                <ScalarProperty Name="freelink" ColumnName="freelink" />
+                <ScalarProperty Name="freewhere" ColumnName="freewhere" />
+                <ScalarProperty Name="freecontent" ColumnName="freecontent" />
+                <ScalarProperty Name="other" ColumnName="other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_functioninfo">
+            <EntityTypeMapping TypeName="Models.C_functioninfo">
+              <MappingFragment StoreEntitySet="_functioninfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="displayname" ColumnName="displayname" />
+                <ScalarProperty Name="actionname" ColumnName="actionname" />
+                <ScalarProperty Name="controllername" ColumnName="controllername" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="fatherid" ColumnName="fatherid" />
+                <ScalarProperty Name="level" ColumnName="level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_roleinfo">
+            <EntityTypeMapping TypeName="Models.C_roleinfo">
+              <MappingFragment StoreEntitySet="_roleinfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="functionids" ColumnName="functionids" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_userinfo">
+            <EntityTypeMapping TypeName="Models.C_userinfo">
+              <MappingFragment StoreEntitySet="_userinfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="realname" ColumnName="realname" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="regtime" ColumnName="regtime" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="lastlogdate" ColumnName="lastlogdate" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="online" ColumnName="online" />
+                <ScalarProperty Name="userlock" ColumnName="userlock" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statisticsLog">
+            <EntityTypeMapping TypeName="Models.statisticsLog">
+              <MappingFragment StoreEntitySet="statisticsLog">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="useruid" ColumnName="useruid" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="descprition" ColumnName="descprition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statisticsUser">
+            <EntityTypeMapping TypeName="Models.statisticsUser">
+              <MappingFragment StoreEntitySet="statisticsUser">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userpwd" ColumnName="userpwd" />
+                <ScalarProperty Name="useruid" ColumnName="useruid" />
+                <ScalarProperty Name="regtime" ColumnName="regtime" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="仓库记录">
+            <EntityTypeMapping TypeName="Models.仓库记录">
+              <MappingFragment StoreEntitySet="仓库记录">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="explain" ColumnName="explain" />
+                <ScalarProperty Name="仓库转移类别" ColumnName="仓库转移类别" />
+                <ScalarProperty Name="入仓库时间" ColumnName="入仓库时间" />
+                <ScalarProperty Name="出仓库时间" ColumnName="出仓库时间" />
+                <ScalarProperty Name="转移出去时间" ColumnName="转移出去时间" />
+                <ScalarProperty Name="转移连单编号" ColumnName="转移连单编号" />
+                <ScalarProperty Name="来源企业名称" ColumnName="来源企业名称" />
+                <ScalarProperty Name="转移到企业名称" ColumnName="转移到企业名称" />
+                <ScalarProperty Name="登记人" ColumnName="登记人" />
+                <ScalarProperty Name="登记日志" ColumnName="登记日志" />
+                <ScalarProperty Name="车辆情况" ColumnName="车辆情况" />
+                <ScalarProperty Name="车辆照片" ColumnName="车辆照片" />
+                <ScalarProperty Name="数量" ColumnName="数量" />
+                <ScalarProperty Name="数量单位" ColumnName="数量单位" />
+                <ScalarProperty Name="存储位置" ColumnName="存储位置" />
+                <ScalarProperty Name="ohter" ColumnName="ohter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="仓库转移类别">
+            <EntityTypeMapping TypeName="Models.仓库转移类别">
+              <MappingFragment StoreEntitySet="仓库转移类别">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="other" ColumnName="other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="合同记录">
+            <EntityTypeMapping TypeName="Models.合同记录">
+              <MappingFragment StoreEntitySet="合同记录">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="合同区域" ColumnName="合同区域" />
+                <ScalarProperty Name="合同类别" ColumnName="合同类别" />
+                <ScalarProperty Name="合同编号" ColumnName="合同编号" />
+                <ScalarProperty Name="甲方" ColumnName="甲方" />
+                <ScalarProperty Name="乙方" ColumnName="乙方" />
+                <ScalarProperty Name="签订地点" ColumnName="签订地点" />
+                <ScalarProperty Name="签订时间" ColumnName="签订时间" />
+                <ScalarProperty Name="合同内容" ColumnName="合同内容" />
+                <ScalarProperty Name="合同生效日期" ColumnName="合同生效日期" />
+                <ScalarProperty Name="合同终止日期" ColumnName="合同终止日期" />
+                <ScalarProperty Name="到期提醒时间" ColumnName="到期提醒时间" />
+                <ScalarProperty Name="结束提醒日期" ColumnName="结束提醒日期" />
+                <ScalarProperty Name="是否到期提醒" ColumnName="是否到期提醒" />
+                <ScalarProperty Name="甲方法人代表" ColumnName="甲方法人代表" />
+                <ScalarProperty Name="已方法人代表" ColumnName="已方法人代表" />
+                <ScalarProperty Name="甲方联系人" ColumnName="甲方联系人" />
+                <ScalarProperty Name="乙方联系人" ColumnName="乙方联系人" />
+                <ScalarProperty Name="甲方联系电话" ColumnName="甲方联系电话" />
+                <ScalarProperty Name="乙方联系电话" ColumnName="乙方联系电话" />
+                <ScalarProperty Name="甲方传真" ColumnName="甲方传真" />
+                <ScalarProperty Name="乙方传真" ColumnName="乙方传真" />
+                <ScalarProperty Name="甲方邮箱" ColumnName="甲方邮箱" />
+                <ScalarProperty Name="乙方邮箱" ColumnName="乙方邮箱" />
+                <ScalarProperty Name="甲方注册地" ColumnName="甲方注册地" />
+                <ScalarProperty Name="乙方注册地" ColumnName="乙方注册地" />
+                <ScalarProperty Name="other" ColumnName="other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="合同类别">
+            <EntityTypeMapping TypeName="Models.合同类别">
+              <MappingFragment StoreEntitySet="合同类别">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="other" ColumnName="other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="区域代码">
+            <EntityTypeMapping TypeName="Models.区域代码">
+              <MappingFragment StoreEntitySet="区域代码">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="other" ColumnName="other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
