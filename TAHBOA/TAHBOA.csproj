@@ -713,6 +713,8 @@
     <Content Include="assets\morris.js-0.4.3\spec\lib\pad_spec.coffee" />
     <Content Include="assets\morris.js-0.4.3\spec\lib\parse_time_spec.coffee" />
     <Content Include="assets\morris.js-0.4.3\spec\support\placeholder.coffee" />
+    <Content Include="App_Data\GeoLiteCity.dat" />
+    <Content Include="Error.ini" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\calendar-custom.js" />
     <Content Include="Scripts\chartjs-custom.js" />
@@ -793,7 +795,6 @@
     <Content Include="Views\Shared\LeftMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="assets\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Views\CustomErrors\" />
     <Folder Include="Views\Finance\" />
