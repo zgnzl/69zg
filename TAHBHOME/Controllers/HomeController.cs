@@ -12,7 +12,10 @@ namespace TAHBHOME.Controllers
         {
             return View();
         }
-
+        public ActionResult NaviClick(string id)
+        {
+            return View(string.Format("{0}partial", id));
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

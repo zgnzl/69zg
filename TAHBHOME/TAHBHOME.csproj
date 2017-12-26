@@ -151,16 +151,31 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\common\common.css" />
+    <Content Include="Content\zgbass.css" />
+    <Content Include="Content\zgtheam.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\69zg_bannar.jpg" />
+    <Content Include="Images\69zg_bannar1.jpg" />
+    <Content Include="Images\AD0In8v4BRACGAAg3JudwwUo8ofJ8QcwtAI48AE.jpg" />
+    <Content Include="Images\AD0In8v4BRACGAAg7ZudwwUoyLXcmQUwswI48AE.jpg" />
+    <Content Include="Images\AD0In8v4BRACGAAg8padwwUo9qPR-wQwtAI48AE.jpg" />
+    <Content Include="Images\AD0In8v4BRACGAAg9ZidwwUo4KalqwIwswI48AE.jpg" />
+    <Content Include="Images\AD0In8v4BRACGAAgk5mdwwUoxdGt4AcwvAI48AE.jpg" />
+    <Content Include="Images\AD0In8v4BRACGAAgxKSdwwUohvjEvQQw1gQ4jgI.jpg" />
+    <Content Include="Images\AD0In8v4BRACGAAg_ZudwwUo0Y6V9AcwvAI48AE.jpg" />
+    <Content Include="Images\AD0In8v4BRAEGAAgkZucwwUogujMhgQw6gI4ugE.png" />
+    <Content Include="Scripts\69zg\site.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -185,6 +200,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AboutPartial.cshtml" />
+    <Content Include="Views\Home\ContactUSPartial.cshtml" />
+    <Content Include="Views\Home\EnterpriseCulturePartial.cshtml" />
+    <Content Include="Views\Home\footerpartial.cshtml" />
+    <Content Include="Views\Home\HeaderPartial.cshtml" />
+    <Content Include="Views\Home\IndexPartial.cshtml" />
+    <Content Include="Views\Home\MessageBoardPartial.cshtml" />
+    <Content Include="Views\Home\NewsPartial.cshtml" />
+    <Content Include="Views\Home\ProductServicePartial.cshtml" />
+    <Content Include="Views\Shared\_PartialCommon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

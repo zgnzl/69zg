@@ -1,0 +1,10 @@
+﻿<meta name="viewport" content="width=device-width" />
+<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+<title>@ViewBag.Title</title>
+@Scripts.Render("~/bundles/jquery")
+<link href="~/Content/common/common.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<script type="text/javascript">
+        var app = '@Request.ApplicationPath';
+        if (app.charAt(app.length - 1) == '/') app = app.substr(0, app.length - 1);
+</script>
