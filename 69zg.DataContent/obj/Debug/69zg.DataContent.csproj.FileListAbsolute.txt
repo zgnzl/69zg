@@ -5,3 +5,4 @@ D:\Git_Asp.net\zg69\69zg.DataContent\bin\Debug\Dos.ORM.xml
 D:\Git_Asp.net\zg69\69zg.DataContent\obj\Debug\69zg.DataContent.csproj.CoreCompileInputs.cache
 D:\Git_Asp.net\zg69\69zg.DataContent\obj\Debug\69zg.DataContent.dll
 D:\Git_Asp.net\zg69\69zg.DataContent\obj\Debug\69zg.DataContent.pdb
+D:\Git_Asp.net\zg69\69zg.DataContent\obj\Debug\69zg.DataContent.csprojResolveAssemblyReference.cache

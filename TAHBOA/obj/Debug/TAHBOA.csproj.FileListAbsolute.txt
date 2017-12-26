@@ -163,3 +163,9 @@ D:\Git_Asp.net\zg69\TAHBOA\bin\zh-Hans\System.Web.WebPages.Deployment.resources.
 D:\Git_Asp.net\zg69\TAHBOA\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 D:\Git_Asp.net\zg69\TAHBOA\obj\Debug\TAHBOA.csprojResolveAssemblyReference.cache
 D:\Git_Asp.net\zg69\TAHBOA\obj\Debug\TAHBOA.csproj.CoreCompileInputs.cache
+D:\Git_Asp.net\zg69\TAHBOA\bin\NPOI.dll
+D:\Git_Asp.net\zg69\TAHBOA\bin\Ionic.Zip.dll
+D:\Git_Asp.net\zg69\TAHBOA\bin\NPOI.OOXML.dll
+D:\Git_Asp.net\zg69\TAHBOA\bin\ICSharpCode.SharpZipLib.dll
+D:\Git_Asp.net\zg69\TAHBOA\bin\NPOI.OpenXmlFormats.dll
+D:\Git_Asp.net\zg69\TAHBOA\bin\NPOI.OpenXml4Net.dll
