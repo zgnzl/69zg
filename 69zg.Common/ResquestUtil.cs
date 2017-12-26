@@ -19,8 +19,9 @@ namespace _69zg.Common
             /// <param name="key">键值</param>
             /// <param name="defaultvalue">默认值</param>
             /// <returns></returns>
-            public static string GetValue(HttpRequestBase request, string key, string defaultvalue = "")
+            public static string GetValue( string key, string defaultvalue = "")
             {
+            HttpRequest request = HttpContext.Current.Request;
                 string result = string.Empty;
                 if (request.RequestType == "POST")
                 {

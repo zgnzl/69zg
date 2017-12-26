@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -105,6 +107,61 @@ namespace _69zg.Common
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// 发送邮件
+        /// </summary>
+        /// <param name="mailACollection">收件人</param>
+        /// <param name="htmlstr">发送内容</param>
+        /// <returns>Tuple<成功邮箱，失败邮箱></returns>
+        public static Tuple<string, string> SendMail(MailAddressCollection mailACollection, string subject, string htmlstr)
+        {
+            MailMessage mailMessage = new MailMessage();
+            StringBuilder successmails = new StringBuilder();
+            StringBuilder faildmails = new StringBuilder();
+            string accountmail = ConfigParam.GetAppSetting("MailAccount");
+            string accountpwd = ConfigParam.GetAppSetting("EmailPassword"); ;
+            List<string> sendemailusers = new List<string>();
+            mailMessage.IsBodyHtml = true;
+            mailMessage.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+            mailMessage.From = new MailAddress(accountmail, ConfigParam.GetAppSetting("MailDisplayName"), Encoding.UTF8);
+            mailMessage.Priority = MailPriority.High;
+            mailMessage.Subject = subject;
+            SmtpClient smtp = new SmtpClient();
+            Array myArr = Array.CreateInstance(typeof(string), mailACollection.Count);
+            smtp.Host = ConfigParam.GetAppSetting("MailHost");
+            smtp.Port = int.Parse(ConfigParam.GetAppSetting("MailPort", "25"));
+            NetworkCredential network = new NetworkCredential();
+            network.UserName = accountmail;
+            network.Password = accountpwd;
+            smtp.Credentials = network;
+            smtp.EnableSsl = true;
+            ServicePointManager.ServerCertificateValidationCallback =
+                    delegate (Object obj, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors) { return true; };
+            foreach (MailAddress mailaddr in mailACollection)
+            {
+                if (sendemailusers.Contains(mailaddr.Address))
+                    continue;
+                sendemailusers.Add(mailaddr.Address);
+                mailMessage.Body = htmlstr.Replace("{mail}", EncryptUtil.EnDeString(mailaddr.Address, true));
+                mailMessage.To.Add(mailaddr);
+                try
+                {
+                    smtp.Send(mailMessage);
+                    successmails.Append(mailaddr.Address + ";");
+                }
+                catch
+                {
+                    faildmails.Append(mailaddr.Address + ";");
+                }
+                finally
+                {
+                    mailMessage.To.Remove(mailaddr);
+                }
+            }
+            mailMessage.Dispose();
+            return Tuple.Create(successmails.ToString(), faildmails.ToString());
         }
     }
 }
