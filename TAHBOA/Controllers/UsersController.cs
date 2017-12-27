@@ -1,13 +1,12 @@
 ﻿using _69zg.DataContent;
-using System;
+using Dos.ORM;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using TAHB.Model;
 
 namespace TAHBOA.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : MasterController
     {
         // GET: Users
         public ActionResult Index()
@@ -15,9 +14,18 @@ namespace TAHBOA.Controllers
             return View();
         }
         #region 用户管理
-        public ActionResult UsersList(int pagesize=1,int pageindex=10)
+        public ActionResult UsersList(string keyword,int pagesize=1,int pageindex=1)
         {
-            DB.Context.FROM
+            WhereClip where = new WhereClip();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                where.And(new WhereClip(_userinfo._.name,keyword,QueryOperator.Like));
+                where.And(new WhereClip(_userinfo._.phone, keyword, QueryOperator.Like));
+            }
+           int count= DB.Context.Count<_userinfo>(where);
+            List<_userinfo> models = DB.Context.From<_userinfo>().Where(where).Page(pagesize, pageindex).OrderByDescending(c=>c.regtime).ToList();
+            ViewBag.models = models;
+            InitPages(count, pageindex, pagesize);
             return View();
         }
         public ActionResult AddUser()

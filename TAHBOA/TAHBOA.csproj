@@ -152,6 +152,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogisticsController.cs" />
     <Compile Include="Controllers\MarketController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -796,6 +797,7 @@
     <Content Include="Views\Shared\_404.cshtml" />
     <Content Include="Views\Shared\LeftMenu.cshtml" />
     <Content Include="Views\Users\UsersList.cshtml" />
+    <Content Include="Views\Shared\Pages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\jquery-file-upload\server\php\files\thumbnail\" />
@@ -803,6 +805,7 @@
     <Folder Include="Views\Finance\" />
     <Folder Include="Views\Logistics\" />
     <Folder Include="Views\Market\" />
+    <Folder Include="Views\Master\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

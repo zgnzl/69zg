@@ -1,6 +1,7 @@
-﻿
+﻿@using TAHB.Model;
 @{
     Layout = null;
+    List<_userinfo> models = ViewBag.models;
 }
 
 <div class="col-lg-12">
@@ -19,22 +20,25 @@
                     <th><i class="icon_mobile"></i> 电话</th>
                     <th><i class="icon_cogs"></i> 操作</th>
                 </tr>
-                <tr>
-                    <td>Angeline Mcclain</td>
-                    <td>2004-07-06</td>
-                    <td>dale@chief.info</td>
-                    <td>Rosser</td>
-                    <td>176-026-5992</td>
-                    <td>
-                        <div class="btn-group">
-                            <a class="btn btn-primary" href="#" data-toggle="tooltip" title="新增用户"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success" href="#" data-toggle="tooltip" title="修改用户消息"><i class="icon_cog"></i></a>
-                            <a class="btn btn-danger" href="#" " data-toggle="tooltip" title="删除用户"><i class="icon_close_alt2"></i></a>
-                        </div>
-                    </td>
-                </tr>
-               
+                @foreach(_userinfo user in models)
+                {
+                    <tr>
+                        <td>@user.name</td>
+                        <td>@user.regtime</td>
+                        <td>@user.email</td>
+                        <td>@user.address</td>
+                        <td>@user.phone</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-primary" onclick="adduser()" href="javascript:void(0)" data-toggle="tooltip" title="新增用户"><i class="icon_plus_alt2"></i></a>
+                                <a class="btn btn-success" onclick="alertuser()"  href="javascript:void(0)" data-toggle="tooltip" title="修改用户消息"><i class="icon_cog"></i></a>
+                                <a class="btn btn-danger"  onclick="deluser()"  href="javascript:void(0)"  data-toggle="tooltip" title="删除用户"><i class="icon_close_alt2"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </section>
+    @Html.Partial("pages")
 </div>

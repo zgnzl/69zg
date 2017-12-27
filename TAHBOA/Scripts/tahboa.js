@@ -1,4 +1,5 @@
-﻿function menuselect(obj) {
+﻿//菜单选择
+function menuselect(obj) {
     $("#main_panel").hide();
     $("#loading").show();
     var actionname = $(obj).attr("actionname");
@@ -15,8 +16,15 @@
     });
 }
 
+//对话框
 function dialog(title, message) {
     $("#dialog_title").html("" + title);
     $("#dialog_message").html("" + message);
     $("#dialog_show").click();
+}
+
+//翻页
+function pages(number)
+{
+
 }

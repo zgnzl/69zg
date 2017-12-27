@@ -1,0 +1,32 @@
+﻿@{ 
+    int modelscount = ViewBag.modelscount;
+    int pagesize = ViewBag.pagesize;
+    int currentpage = ViewBag.currentpage;
+    string controller = ViewBag.controller;
+    string action = ViewBag.action;
+    int pages = modelscount % pagesize == 0 ? modelscount / pagesize : modelscount / pagesize + 1;
+}
+<input hidden id="pagesize" value="@pagesize" />
+<input hidden id="currentpage" value="@currentpage" />
+<input hidden id="controller" value="@controller" />
+<input hidden id="action" value="@action" />
+<ul class="pagination pagination-lg" style="float:right">
+    @if(currentpage!=1)
+    {
+    <li><a onclick="pages('p')" href="javascript:void(0)">«</a></li>
+    }
+    @for (int i = 1; i <= pages; i++)
+    {
+        if (i == currentpage)
+        {
+            <li ><a style="background-color:darkgray;cursor:default" href="javascript:void(0)">@i</a></li>
+        }else
+        {
+        <li><a href="javascript:void(0)" onclick="pages('@i')">@i</a></li>
+        }
+    }
+    @if(currentpage!=pages)
+    {
+    <li><a href="javascript:void(0)"onclick="pages('n')" >»</a></li>
+    }
+</ul>
