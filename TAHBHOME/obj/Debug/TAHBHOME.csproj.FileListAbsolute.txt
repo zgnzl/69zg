@@ -72,3 +72,4 @@ D:\Git_Asp.net\zg69\TAHBHOME\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 D:\Git_Asp.net\zg69\TAHBHOME\obj\Debug\TAHBHOME.csproj.CoreCompileInputs.cache
 D:\Git_Asp.net\zg69\TAHBHOME\obj\Debug\TAHBHOME.dll
 D:\Git_Asp.net\zg69\TAHBHOME\obj\Debug\TAHBHOME.pdb
+D:\Git_Asp.net\zg69\TAHBHOME\obj\Debug\TAHBHOME.csprojResolveAssemblyReference.cache

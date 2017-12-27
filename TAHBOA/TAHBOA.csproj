@@ -600,6 +600,7 @@
     <Content Include="img\icons\weather.png" />
     <Content Include="img\India.png" />
     <Content Include="img\left-arrow.png" />
+    <Content Include="img\loading.gif" />
     <Content Include="img\logo-big.png" />
     <Content Include="img\mail-avatar.jpg" />
     <Content Include="img\profile-avatar.jpg" />
@@ -773,6 +774,7 @@
     <Content Include="Scripts\sliders.js" />
     <Content Include="Scripts\sparkline-chart.js" />
     <Content Include="Scripts\sparklines.js" />
+    <Content Include="Scripts\tahboa.js" />
     <Content Include="Scripts\xcharts.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -793,6 +795,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_404.cshtml" />
     <Content Include="Views\Shared\LeftMenu.cshtml" />
+    <Content Include="Views\Users\UsersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\jquery-file-upload\server\php\files\thumbnail\" />
@@ -800,7 +803,6 @@
     <Folder Include="Views\Finance\" />
     <Folder Include="Views\Logistics\" />
     <Folder Include="Views\Market\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

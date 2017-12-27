@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _69zg.DataContent;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,9 +15,10 @@ namespace TAHBOA.Controllers
             return View();
         }
         #region 用户管理
-        public ActionResult UsersList()
+        public ActionResult UsersList(int pagesize=1,int pageindex=10)
         {
-            return Content("用户列表");
+            DB.Context.FROM
+            return View();
         }
         public ActionResult AddUser()
         {
