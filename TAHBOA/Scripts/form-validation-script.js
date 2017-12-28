@@ -6,7 +6,7 @@ var Script = function () {
 
     $().ready(function() {
         // validate the comment form when it is submitted
-        $("#feedback_form").validate();
+        $("#form_AddUser").validate();
 
         // validate signup form on keyup and submit
         $("#register_form").validate({

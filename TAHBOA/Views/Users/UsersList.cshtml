@@ -42,3 +42,12 @@
     </section>
     @Html.Partial("pages")
 </div>
+<div id="modal_body_AddUser" style="display:none">
+    @Html.Partial("AddUser")
+</div>
+<script>
+    function adduser()
+    {
+        modal("新增用户", "modal_body_AddUser", "取消", "保存", "users/AddUser");
+    }
+</script>

@@ -1,10 +1,13 @@
-﻿@{ 
+﻿@{
     int modelscount = ViewBag.modelscount;
     int pagesize = ViewBag.pagesize;
     int currentpage = ViewBag.currentpage;
     int pages = modelscount % pagesize == 0 ? modelscount / pagesize : modelscount / pagesize + 1;
 }
 <input hidden id="currentpage" value="@currentpage" />
+<input hidden id="pagesize" value="@pagesize" />
+<input hidden id="controllername" value="@ViewBag.controller" />
+<input hidden id="actionname" value="@ViewBag.action" />
 <ul class="pagination pagination-lg" style="float:right">
     @if(currentpage!=1)
     {
@@ -14,41 +17,16 @@
     {
         if (i == currentpage)
         {
-            <li ><a style="background-color:darkgray;cursor:default" href="javascript:void(0)">@i</a></li>
+    <li><a style="background-color:darkgray;cursor:default" href="javascript:void(0)">@i</a></li>
         }else
         {
-        <li><a href="javascript:void(0)" onclick="pages('@i')">@i</a></li>
+    <li><a href="javascript:void(0)" onclick="pages('@i')">@i</a></li>
         }
     }
     @if(currentpage!=pages)
     {
-    <li><a href="javascript:void(0)"onclick="pages('n')" >»</a></li>
+    <li><a href="javascript:void(0)" onclick="pages('n')">»</a></li>
     }
 </ul>
-<script>
-    //翻页
-    function pages(number) {
-        var actionname ="@ViewBag.action";
-        var controllername ="@ViewBag.controller";
-        var pagesize =@ViewBag.pagesize;
-        var currentpage = 1;
-        switch (number) {
-            case "p": currentpage = @(currentpage-1); break;
-            case "n": currentpage = @(currentpage+1);break;
-            default:
-                currentpage = parseInt(number);
-                break;
-        }
-        $.ajax({
-            url: app + "/" + controllername + "/" + actionname,
-            data: { pagesize=pagesize, pageindex=currentpage, keyword=$("#keyword").val() == "undefined" ? "" : $("#keyword").val() },
-            type: "get",
-            success: function (data) {
-                $("#main_panel").html(data); $("#loading").hide(); $("#main_panel").show();
-            },
-            error: function () {
-                $("#main_panel").html($(obj).html() + "•功能待完善……");
-            }
-        });
-    }
-</script>
+
+

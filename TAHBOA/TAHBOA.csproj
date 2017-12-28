@@ -172,6 +172,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TAHBOA.mdf" />
+    <Content Include="App_Data\TAHBOA_log.ldf">
+      <DependentUpon>TAHBOA.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\chart-master\.gitignore" />
     <Content Include="assets\chart-master\Chart.js" />
     <Content Include="assets\chart-master\Chart.min.js" />
@@ -798,6 +802,7 @@
     <Content Include="Views\Shared\LeftMenu.cshtml" />
     <Content Include="Views\Users\UsersList.cshtml" />
     <Content Include="Views\Shared\Pages.cshtml" />
+    <Content Include="Views\Users\AddUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\jquery-file-upload\server\php\files\thumbnail\" />
