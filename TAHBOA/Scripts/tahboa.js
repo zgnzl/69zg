@@ -23,8 +23,3 @@ function dialog(title, message) {
     $("#dialog_show").click();
 }
 
-//翻页
-function pages(number)
-{
-
-}
