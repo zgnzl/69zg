@@ -31,8 +31,8 @@
                         <td>
                             <div class="btn-group">
                                 <a class="btn btn-primary" onclick="adduser()" href="javascript:void(0)" data-toggle="tooltip" title="新增用户"><i class="icon_plus_alt2"></i></a>
-                                <a class="btn btn-success" onclick="alertuser()"  href="javascript:void(0)" data-toggle="tooltip" title="修改用户消息"><i class="icon_cog"></i></a>
-                                <a class="btn btn-danger"  onclick="deluser()"  href="javascript:void(0)"  data-toggle="tooltip" title="删除用户"><i class="icon_close_alt2"></i></a>
+                                <a class="btn btn-success" onclick="updatetuser('@user.id','@user.name')"  href="javascript:void(0)" data-toggle="tooltip" title="修改用户消息"><i class="icon_cog"></i></a>
+                                <a class="btn btn-danger"  onclick="deluser('@user.id','@user.name')"  href="javascript:void(0)"  data-toggle="tooltip" title="删除用户"><i class="icon_close_alt2"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -45,9 +45,38 @@
 <div id="modal_body_AddUser" style="display:none">
     @Html.Partial("AddUser")
 </div>
+<div id="modal_body_DelUser" style="display:none">
+   用户删除后无法找回，确认删除？
+</div>
 <script>
     function adduser()
     {
         modal("新增用户", "modal_body_AddUser", "取消", "保存", "users/AddUser");
+    }
+    function deluser(id,name)
+    {
+        modal("删除用户: " + name, "modal_body_DelUser", "取消", "删除", "users/DelUser/" + id);
+    }
+    function updatetuser(id, name) {
+       
+        $.ajax({
+            url: app + "/users/UpdateUser/" + id,
+            type: 'get',
+            async: false,
+            success: function (data) {
+                $("#modal_body").html("");
+                $("#modal_title").html("修改用户: " + name);
+                $("#modal_body").append(data);
+                $("#modal_close").html("取消");
+                $("#modal_save").html("修改");
+                $("#modal_save").attr("submiturl", "users/UpdateUser/");
+                $("#modal").show();
+            },
+            error: function ()
+            {
+                dialog("失败","本次修改失败")
+            }
+        });
+       
     }
 </script>

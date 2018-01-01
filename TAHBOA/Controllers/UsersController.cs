@@ -10,13 +10,9 @@ namespace TAHBOA.Controllers
 {
     public class UsersController : MasterController
     {
-        // GET: Users
-        public ActionResult Index()
-        {
-            return View();
-        }
+
         #region 用户管理
-        public ActionResult UsersList(string keyword,int pagesize=2,int pageindex=1)
+        public ActionResult UsersList(string keyword,int pagesize=10,int pageindex=1)
         {
             WhereClip where = new WhereClip();
             if (!string.IsNullOrEmpty(keyword))
@@ -54,18 +50,66 @@ namespace TAHBOA.Controllers
                 return Json(new { title = "失败", message = "未能添加用户：" + model.name });
             }
         }
-        public ActionResult UpdateUserRole()
+
+        public ActionResult DelUser(int id)
         {
-            return Content("用户角色修改");
+            if (DB.Context.Delete<_userinfo>(id) > 0)
+            {
+                return Json(new { title = "成功", message = "用户删除成功" });
+            }
+            else {
+                return Json(new { title = "失败", message = "用户删除失败" });
+            }
+        }
+
+        public ActionResult UpdateUser(_userinfo model)
+        {
+            if (string.IsNullOrEmpty(model.name))
+            {
+                _userinfo oldmodel = DB.Context.From<_userinfo>().Where(c => c.id == model.id).First();
+                List<_roleinfo> roles = DB.Context.From<_roleinfo>().ToList();
+                ViewBag.roles = roles;
+                return View(oldmodel);
+            }
+            if (!string.IsNullOrEmpty(model.pwd))
+            {
+                model.pwd = model.pwd.ToMd5();
+            }
+            else
+            {
+                model.pwd = DB.Context.From<_userinfo>().Where(c => c.id == model.id).First().pwd;
+            }
+            if (DB.Context.Update<_userinfo>(model) > 0)
+            {
+                return Json(new { title = "成功", message = "成功修改用户：" + model.name });
+            }
+            else
+            {
+                return Json(new { title = "失败", message = "修改失败用户：" + model.name });
+            }
         }
         #endregion
 
         #region 角色管理
-        public ActionResult RolesList()
+        public ActionResult RolesList(string keyword, int pagesize = 10, int pageindex = 1)
         {
-            return Content("角色列表");
+            WhereClip where = new WhereClip();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                where.And(new WhereClip(_roleinfo._.name, keyword, QueryOperator.Like));
+                where.And(new WhereClip(_roleinfo._.description, keyword, QueryOperator.Like));
+            }
+            int count = DB.Context.Count<_roleinfo>(where);
+            List<_roleinfo> models = DB.Context.From<_roleinfo>().Where(where).OrderByDescending(c => c.id).Page(pagesize, pageindex).ToList();
+            ViewBag.models = models;
+            InitPages(count, pageindex, pagesize);
+            return View();
         }
         public ActionResult AddRole()
+        {
+            return Content("新增角色");
+        }
+        public ActionResult DelRole()
         {
             return Content("新增角色");
         }

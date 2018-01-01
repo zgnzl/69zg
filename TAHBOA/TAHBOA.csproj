@@ -571,6 +571,7 @@
     <Content Include="Content\jquery-jvectormap-1.2.2.css" />
     <Content Include="Content\jquery-ui-1.10.4.min.css" />
     <Content Include="Content\line-icons.css" />
+    <Content Include="Content\nzl-calendar.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\style-responsive.css" />
     <Content Include="Content\style.css" />
@@ -594,6 +595,7 @@
     <Content Include="img\chat-avatar.jpg" />
     <Content Include="img\chat-avatar2.jpg" />
     <Content Include="img\customSelect-arrow.gif" />
+    <Content Include="img\date_bg.png" />
     <Content Include="img\geekslabs.png" />
     <Content Include="img\Germany.png" />
     <Content Include="img\icons\line-icon-c.png" />
@@ -803,6 +805,10 @@
     <Content Include="Views\Users\UsersList.cshtml" />
     <Content Include="Views\Shared\Pages.cshtml" />
     <Content Include="Views\Users\AddUser.cshtml" />
+    <Content Include="Views\Users\UpdateUser.cshtml" />
+    <Content Include="Scripts\nzl.calendar.js" />
+    <Content Include="Views\Users\RolesList.cshtml" />
+    <Content Include="Views\Users\AddRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\jquery-file-upload\server\php\files\thumbnail\" />

@@ -1,0 +1,113 @@
+﻿@using TAHB.Model
+@model _userinfo
+@{
+    Layout = null;
+    List<_roleinfo> roles = ViewBag.roles;
+}
+<input name="id" id="id" value="@Model.id" hidden />
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">用户名<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="name" name="name" minlength="5" type="text" value="@Model.name" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cemail" class="control-label col-lg-2">真实姓名 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control " id="realname" type="text" name="realname" value="@Model.realname" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="curl" class="control-label col-lg-2">密码</label>
+    <div class="col-lg-10">
+        <input class="form-control " id="pwd" type="password" value="" name="pwd">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">电话 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="phone" name="phone" value="@Model.phone" minlength="5" type="text" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">固话 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="tel" name="tel" minlength="5" value="@Model.tel" type="tel" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">邮箱 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="email" name="email" value="@Model.email" minlength="5" type="email" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="ccomment" class="control-label col-lg-2">地址</label>
+    <div class="col-lg-10">
+        <input class="form-control " id="address" value="@Model.address" name="address" required="" />
+    </div>
+</div>
+<div class="form-group ">
+    <label for="ccomment" class="control-label col-lg-2">有效期</label>
+    <div class="col-lg-10">
+        <input class="form-control " id="endtime" name="endtime" value="@Model.endtime" required="" />
+        <div  >
+            <div id="divDate" class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><span class="">30</span></td></tr><tr><td><span class="">31</span></td><td><span class="">1</span></td><td><span class="">2</span></td><td><span class="">3</span></td><td><span class="">4</span></td><td><span class="">5</span></td><td><span class="">6</span></td></tr></tbody></table>      </div>    </div>  </div></div><div id="txtEndDateCalendar" class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><a>30</a></td></tr><tr><td><a>31</a></td><td><a class="nextD  ">1</a></td><td><a class="nextD  ">2</a></td><td><a class="nextD  ">3</a></td><td><a class="nextD  ">4</a></td><td><a class="nextD  ">5</a></td><td><a class="nextD  ">6</a></td></tr></tbody></table>      </div>    </div>  </div></div>
+        </div>
+            </div>
+</div>
+
+<div class="form-group ">
+    <label for="ccomment" class="control-label col-lg-2">锁定账号</label>
+    <div class="col-sm-6 text-center">
+        <input hidden="hidden" id="userlock" name="userlock" />
+        <div class="switch has-switch"><div onclick="userlock(this)" class="@(Model.userlock==1?"switch-on":"switch-off") switch-animate"><input type="checkbox" checked="" data-toggle="switch"><span class="switch-left">ON</span><label>&nbsp;</label><span class="switch-right">OFF</span></div></div>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="ccomment" class="control-label col-lg-2">用户角色</label>
+    <div class="col-lg-10">
+        <select id="roleid" name="roleid" class="form-control m-bot15">
+            @foreach (_roleinfo role in roles)
+            {
+                if (role.id == Model.roleid)
+                {
+                    <option selected value="@role.id">@role.name</option>
+                }
+                else
+                {
+                    <option value="@role.id">@role.name</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+<script>
+    function userlock(obj) {
+        if ($(obj).hasClass("switch-on")) {
+            $("#userlock").val(1); $(obj).removeClass("switch-on").addClass("switch-off");
+        } else {
+            $("#userlock").val(0); $(obj).removeClass("switch-off").addClass("switch-on");
+        }
+    };
+
+
+    $("#endtime").calendar({
+
+        controlId: "divDate",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+        speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+        complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+        readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+        upperLimit: NaN ,                               // 日期上限，默认：NaN(不限制)
+
+        lowerLimit: new Date(),                   // 日期下限，默认：NaN(不限制)
+
+        callback: function () {                               // 点击选择日期后的回调函数
+            dialog("警告", "该账号将于：" + $("#endtime").val() + "无法再使用");
+        }
+    });
+</script>
