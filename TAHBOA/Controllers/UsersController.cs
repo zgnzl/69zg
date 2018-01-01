@@ -1,5 +1,6 @@
 ﻿using _69zg.Common;
 using _69zg.DataContent;
+using _69zg.Filter;
 using Dos.ORM;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using TAHB.Model;
 
 namespace TAHBOA.Controllers
 {
+    [LoginFilter]
     public class UsersController : MasterController
     {
 
@@ -105,13 +107,27 @@ namespace TAHBOA.Controllers
             InitPages(count, pageindex, pagesize);
             return View();
         }
-        public ActionResult AddRole()
+        public ActionResult AddRole(_roleinfo model)
         {
-            return Content("新增角色");
+            if (DB.Context.Insert<_roleinfo>(model) > 0)
+            {
+                return Json(new { title = "成功", message = "成功添加用户：" + model.name });
+            }
+            else
+            {
+                return Json(new { title = "失败", message = "未能添加用户：" + model.name });
+            }
         }
-        public ActionResult DelRole()
+        public ActionResult DelRole(int id)
         {
-            return Content("新增角色");
+            if (DB.Context.Delete<_roleinfo>(id) > 0)
+            {
+                return Json(new { title = "成功", message = "角色删除成功" });
+            }
+            else
+            {
+                return Json(new { title = "失败", message = "角色删除失败" });
+            }
         }
         #endregion
     }

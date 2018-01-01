@@ -1,7 +1,8 @@
 ﻿//菜单选择
 function menuselect(obj) {
     $("#main_panel").hide();
-    $("#loading").show();
+    $("#loading").show(); 
+    $("#panal").html($(obj).html());
     var actionname = $(obj).attr("actionname");
     var controllername = $(obj).attr("controllername");
     $.ajax({

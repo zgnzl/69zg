@@ -840,6 +840,10 @@
       <Project>{67a5d3f3-6146-42fb-92a7-485f52a2db65}</Project>
       <Name>69zg.DataContent</Name>
     </ProjectReference>
+    <ProjectReference Include="..\69zg.Filter\69zg.Filter.csproj">
+      <Project>{d0cf4310-6f59-4620-a207-455e17d86c75}</Project>
+      <Name>69zg.Filter</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

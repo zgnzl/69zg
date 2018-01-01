@@ -1,21 +1,16 @@
 ﻿using _69zg.DataContent;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TAHB.Model;
+using _69zg.Filter;
 
 namespace TAHBOA.Controllers
 {
+    [LoginFilter()]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            if (Session["currentuser"] == null)
-            {
-                Response.Redirect("./login");
-            }
             _userinfo users = Session["currentuser"] as _userinfo;
             ViewBag.name = users.realname ?? users.name;
             List<_functioninfo> listfunction =DB.Context.From<_functioninfo>().ToList();
