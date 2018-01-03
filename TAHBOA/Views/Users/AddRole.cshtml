@@ -1,1 +1,89 @@
-﻿
+﻿@using TAHB.Model
+@{
+    Layout = null;
+    List<_functioninfo> functions = ViewBag.functions;
+}
+<div class="form-group ">
+    <label for="cemail" class="control-label col-lg-2">名称 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control " id="name" type="text" name="name" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="curl" class="control-label col-lg-2">描述</label>
+    <div class="col-lg-10">
+        <input class="form-control " id="description" type="text" name="description">
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cemail" class="control-label col-lg-2">角色权限 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select  multiple="multiple"  id="functionlist"   style="display:none;min-width:200px;min-height:200px">
+            @foreach (_functioninfo function in functions.FindAll(c => c.level == 0))
+            {
+                <optgroup label='@function.displayname'>
+                   @foreach (_functioninfo cfunction in functions.FindAll(c => c.fatherid == function.id))
+                   {
+                    <option  value="@(cfunction.fatherid+"_"+ cfunction.id)">@cfunction.displayname</option>
+                   }
+                </optgroup>
+                   
+            }
+        </select>
+        @*<div class="btn-group-vertical" style="margin-top: 60px;vertical-align: top;">
+            <input class="btn btn-default" onclick="addfunction()" type="button" value=">>" />
+            <input class="btn btn-default" onclick="removefunction()" type="button" value="<<"/>
+        </div>
+        <select  multiple="multiple" id="selectlist" name="selectlist"  style="min-width:200px;min-height:200px">
+          
+        </select>*@
+    </div>
+    <input hidden id="functionids" name="functionids" />
+</div>
+<script>
+    //http://loudev.com/#demos
+    $('#functionlist').multiSelect({
+        selectableOptgroup: true,
+        afterSelect: function (values) {
+            alert("Select value: " + values);
+        },
+        afterDeselect: function (values) {
+            alert("Deselect value: " + values);
+        } });
+    //function addfunction() {
+       
+    //    if ($("#functionlist").find("option:selected").length > 0) {
+    //        $("#functionlist option:selected").each(function () {
+    //            $("#selectlist").append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option");
+    //            $(this).remove();
+    //        })
+    //    }
+    //    else {
+    //        alert("请选择要添加的分包！");
+            
+    //    }
+    //    handlesids(); $("#functionlist").load(location.href + "#functionlist");
+    //}
+    //function removefunction() {
+    //    if ($("#selectlist option:selected").length > 0) {
+    //        $("#selectlist option:selected").each(function () {
+    //            $("#functionlist").append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option");
+    //            $(this).remove();
+    //        })
+    //    }
+    //    else {
+    //        alert("请选择要删除的分包！");
+    //        handlesids();
+    //    }
+    //}
+    //function handlesids()
+    //{
+    //    var ids = "";
+    //    $("#selectlist option").each(this)
+    //    {
+    //        ids += $(this).val()+",";
+    //    };
+    //    $("#functionids").val(ids);
+    //}
+</script>

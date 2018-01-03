@@ -103,6 +103,8 @@ namespace TAHBOA.Controllers
             }
             int count = DB.Context.Count<_roleinfo>(where);
             List<_roleinfo> models = DB.Context.From<_roleinfo>().Where(where).OrderByDescending(c => c.id).Page(pagesize, pageindex).ToList();
+            List<_functioninfo> functions = DB.Context.From<_functioninfo>().ToList();
+            ViewBag.functions = functions;
             ViewBag.models = models;
             InitPages(count, pageindex, pagesize);
             return View();

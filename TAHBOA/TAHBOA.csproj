@@ -619,6 +619,7 @@
     <Content Include="img\sample-img-3.png" />
     <Content Include="img\search-icon.jpg" />
     <Content Include="img\Spain.png" />
+    <Content Include="img\switch.png" />
     <Content Include="img\user.jpg" />
     <Content Include="img\user22.png" />
     <Content Include="Scripts\additional-methods.min.js" />
@@ -745,7 +746,6 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.8.3.min.js" />
     <Content Include="Scripts\jquery-jvectormap-1.2.2.min.js" />
     <Content Include="Scripts\jquery-jvectormap-world-mill-en.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
@@ -756,6 +756,7 @@
     <Content Include="Scripts\jquery.hotkeys.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.localscroll.js" />
+    <Content Include="Scripts\jquery.multi-select.js" />
     <Content Include="Scripts\jquery.nicescroll.js" />
     <Content Include="Scripts\jquery.placeholder.min.js" />
     <Content Include="Scripts\jquery.rateit.min.js" />
@@ -774,6 +775,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\morris-script.js" />
     <Content Include="Scripts\morris.min.js" />
+    <Content Include="Content\multi-select.css" />
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

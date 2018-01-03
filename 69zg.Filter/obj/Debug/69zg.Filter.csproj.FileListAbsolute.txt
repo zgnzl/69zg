@@ -19,3 +19,4 @@ D:\Git_Asp.net\zg69\69zg.Filter\bin\Debug\zh-Hans\System.Web.WebPages.Deployment
 D:\Git_Asp.net\zg69\69zg.Filter\obj\Debug\69zg.Filter.csproj.CoreCompileInputs.cache
 D:\Git_Asp.net\zg69\69zg.Filter\obj\Debug\69zg.Filter.dll
 D:\Git_Asp.net\zg69\69zg.Filter\obj\Debug\69zg.Filter.pdb
+D:\Git_Asp.net\zg69\69zg.Filter\obj\Debug\69zg.Filter.csprojResolveAssemblyReference.cache
