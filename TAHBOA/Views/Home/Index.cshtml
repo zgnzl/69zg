@@ -40,12 +40,12 @@
     <link href="~/Content/xcharts.min.css" rel=" stylesheet">
     <link href="~/Content/jquery-ui-1.10.4.min.css" rel="stylesheet">
     <link href="~/Content/nzl-calendar.css" rel="stylesheet" />
-   
+
 
 
     <style>
         .red {
-       color:black;
+            color: black;
         }
     </style>
 </head>
@@ -319,7 +319,7 @@
         <!--header end-->
         <!--sidebar start-->
         <aside>
-           @{Html.RenderPartial("LeftMenu");}
+            @{Html.RenderPartial("LeftMenu");}
         </aside>
         <!--sidebar end-->
         <!--main content start-->
@@ -336,7 +336,7 @@
                     </div>
                 </div>
                 <div id="loading" style="text-align:center;display:none;z-index:1000">
-                    <img  src="~/img/loading.gif" alt="加载……" />
+                    <img src="~/img/loading.gif" alt="加载……" />
                 </div>
                 <div id="main_panel">
 
@@ -962,7 +962,7 @@
     </section>
     <!-- container section start -->
     <!-- javascripts -->
-    <script src="~/Scripts/jquery-ui-1.10.4.min.js"></script>
+    @*<script src="~/Scripts/jquery-ui-1.10.4.min.js"></script>*@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-ui-1.9.2.custom.min.js"></script>
     <!-- bootstrap -->
@@ -1071,12 +1071,12 @@
                         Body goes here...
 
                     </div>
-                    </form>
-                    <div class="modal-footer">
-                        <button data-dismiss="modal" id="modal_close" class="btn btn-default" onclick="$('#modal').hide()" type="button">Close</button>
-                        <button class="btn btn-success" id="modal_save"  submiturl="" onclick="modal_save()" type="button">Save changes</button>
-                    </div>
-</div>
+                </form>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" id="modal_close" class="btn btn-default" onclick="$('#modal').hide()" type="button">Close</button>
+                    <button class="btn btn-success" id="modal_save" submiturl="" onclick="modal_save()" type="button">Save changes</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1093,7 +1093,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal"  type="button"> Ok</button>
+                    <button class="btn btn-danger" data-dismiss="modal" type="button"> Ok</button>
                 </div>
             </div>
         </div>

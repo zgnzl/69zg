@@ -111,7 +111,7 @@ namespace TAHBOA.Controllers
         }
         public ActionResult AddRole(_roleinfo model)
         {
-            if (DB.Context.Insert<_roleinfo>(model) > 0)
+            if (!string.IsNullOrEmpty(model.functionids) &&DB.Context.Insert<_roleinfo>(model) > 0)
             {
                 return Json(new { title = "成功", message = "成功添加用户：" + model.name });
             }

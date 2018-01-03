@@ -19,7 +19,7 @@
 <div class="form-group ">
     <label for="cemail" class="control-label col-lg-2">角色权限 <span class="required">*</span></label>
     <div class="col-lg-10">
-        <select  multiple="multiple"  id="functionlist"   style="display:none;min-width:200px;min-height:200px">
+        <select  multiple="multiple"  id="functionlist">
             @foreach (_functioninfo function in functions.FindAll(c => c.level == 0))
             {
                 <optgroup label='@function.displayname'>
@@ -42,7 +42,6 @@
     <input hidden id="functionids" name="functionids" />
 </div>
 <script>
-    //http://loudev.com/#demos
     $('#functionlist').multiSelect({
         selectableOptgroup: true,
         afterSelect: function (values) {
