@@ -31,13 +31,14 @@ E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\System.Web.Mvc.xml
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\System.Web.Razor.xml
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\System.Web.WebPages.Razor.xml
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\System.Web.WebPages.xml
+E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\Microsoft.Web.Infrastructure.xml
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\zh-Hans\System.Web.Razor.resources.dll
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\zh-Hans\System.Web.WebPages.Razor.resources.dll
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\zh-Hans\System.Web.WebPages.resources.dll
 E:\TeamFondationServers\69zg\69zg.Filter\bin\Debug\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+E:\TeamFondationServers\69zg\69zg.Filter\obj\Debug\69zg.Filter.csprojResolveAssemblyReference.cache
 E:\TeamFondationServers\69zg\69zg.Filter\obj\Debug\69zg.Filter.csproj.CoreCompileInputs.cache
 E:\TeamFondationServers\69zg\69zg.Filter\obj\Debug\69zg.Filter.dll
 E:\TeamFondationServers\69zg\69zg.Filter\obj\Debug\69zg.Filter.pdb
-E:\TeamFondationServers\69zg\69zg.Filter\obj\Debug\69zg.Filter.csprojResolveAssemblyReference.cache
