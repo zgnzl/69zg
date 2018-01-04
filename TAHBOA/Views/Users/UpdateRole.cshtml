@@ -1,0 +1,69 @@
+﻿@using TAHB.Model
+@model _roleinfo
+@{
+    Layout = null;
+    List<_functioninfo> functions = ViewBag.functions;
+    string ids = Model.functionids;
+    string selectids = "";
+}
+<input name="id" id="id" value="@Model.id" hidden />
+<div class="form-group ">
+    <label for="cemail" class="control-label col-lg-2">名称 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control " id="name" type="text" name="name" value="@Model.name" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="curl" class="control-label col-lg-2">描述</label>
+    <div class="col-lg-10">
+        <input class="form-control " id="description" type="text" value="@Model.description" name="description">
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cemail" class="control-label col-lg-2">角色权限 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select multiple="multiple" id="functionlist">
+            @foreach (_functioninfo function in functions.FindAll(c => c.level == 0))
+            {
+                <optgroup label='@function.displayname'>
+                    @foreach (_functioninfo cfunction in functions.FindAll(c => c.fatherid == function.id))
+                    {
+                        if (ids.Contains(cfunction.id + ",")|| ids=="*")
+                        {
+                            selectids += cfunction.fatherid + "_" + cfunction.id + ",";
+                            <option selected value="@(cfunction.fatherid+"_"+ cfunction.id)">@cfunction.displayname</option>
+                        }
+                        else
+                        {
+                            <option value="@(cfunction.fatherid+"_"+ cfunction.id)">@cfunction.displayname</option>
+                        }
+
+                    }
+                </optgroup>
+
+            }
+        </select>
+    </div>
+    <input hidden id="functionids" name="functionids" value="@selectids"/>
+</div>
+<script>
+    $('#modal_form #functionlist').multiSelect({
+        selectableOptgroup: true,
+        afterSelect: function (values) {
+            handlesids("add", values);
+        },
+        afterDeselect: function (values) {
+            handlesids("remove", values);
+        } });
+
+    function handlesids(opt,value)
+    {
+        var ids = $("#modal_form #functionids").val();
+        switch (opt) {
+            case 'add': ids= ids + value + ","; break;
+            case 'remove': ids= ids.replace(value + ",", ""); break;
+        }
+        $("#modal_form #functionids").val(ids);
+    }
+</script>

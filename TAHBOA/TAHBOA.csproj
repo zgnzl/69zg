@@ -811,6 +811,7 @@
     <Content Include="Scripts\nzl.calendar.js" />
     <Content Include="Views\Users\RolesList.cshtml" />
     <Content Include="Views\Users\AddRole.cshtml" />
+    <Content Include="Views\Users\UpdateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\jquery-file-upload\server\php\files\thumbnail\" />

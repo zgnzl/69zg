@@ -259,3 +259,5 @@ D:\Git_Asp.net\zg69\TAHBOA\obj\Debug\TAHBOA.csprojResolveAssemblyReference.cache
 D:\Git_Asp.net\zg69\TAHBOA\obj\Debug\TAHBOA.csproj.CoreCompileInputs.cache
 D:\Git_Asp.net\zg69\TAHBOA\obj\Debug\TAHBOA.dll
 D:\Git_Asp.net\zg69\TAHBOA\obj\Debug\TAHBOA.pdb
+E:\TeamFondationServers\69zg\TAHBOA\bin\69zg.Filter.dll
+E:\TeamFondationServers\69zg\TAHBOA\bin\69zg.Filter.pdb

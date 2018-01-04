@@ -31,58 +31,26 @@
                    
             }
         </select>
-        @*<div class="btn-group-vertical" style="margin-top: 60px;vertical-align: top;">
-            <input class="btn btn-default" onclick="addfunction()" type="button" value=">>" />
-            <input class="btn btn-default" onclick="removefunction()" type="button" value="<<"/>
-        </div>
-        <select  multiple="multiple" id="selectlist" name="selectlist"  style="min-width:200px;min-height:200px">
-          
-        </select>*@
     </div>
     <input hidden id="functionids" name="functionids" />
 </div>
 <script>
-    $('#functionlist').multiSelect({
+    $('#modal_form #functionlist').multiSelect({
         selectableOptgroup: true,
         afterSelect: function (values) {
-            alert("Select value: " + values);
+            handlesids("add", values);
         },
         afterDeselect: function (values) {
-            alert("Deselect value: " + values);
+            handlesids("remove", values);
         } });
-    //function addfunction() {
-       
-    //    if ($("#functionlist").find("option:selected").length > 0) {
-    //        $("#functionlist option:selected").each(function () {
-    //            $("#selectlist").append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option");
-    //            $(this).remove();
-    //        })
-    //    }
-    //    else {
-    //        alert("请选择要添加的分包！");
-            
-    //    }
-    //    handlesids(); $("#functionlist").load(location.href + "#functionlist");
-    //}
-    //function removefunction() {
-    //    if ($("#selectlist option:selected").length > 0) {
-    //        $("#selectlist option:selected").each(function () {
-    //            $("#functionlist").append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option");
-    //            $(this).remove();
-    //        })
-    //    }
-    //    else {
-    //        alert("请选择要删除的分包！");
-    //        handlesids();
-    //    }
-    //}
-    //function handlesids()
-    //{
-    //    var ids = "";
-    //    $("#selectlist option").each(this)
-    //    {
-    //        ids += $(this).val()+",";
-    //    };
-    //    $("#functionids").val(ids);
-    //}
+    
+    function handlesids(opt,value)
+    {
+        var ids = $("#modal_form #functionids").val();
+        switch (opt) {
+            case 'add': ids= ids + value + ","; break;
+            case 'remove': ids= ids.replace(value + ",", ""); break;
+        }
+        $("#modal_form #functionids").val(ids);
+    }
 </script>

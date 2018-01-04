@@ -1,12 +1,14 @@
-﻿//菜单选择
+﻿var currentactionname = "";
+var currentcontroller = "";
+//菜单选择
 function menuselect(obj) {
     $("#main_panel").hide();
     $("#loading").show(); 
     $("#panal").html($(obj).html());
-    var actionname = $(obj).attr("actionname");
-    var controllername = $(obj).attr("controllername");
+    currentactionname = $(obj).attr("actionname");
+    currentcontroller= $(obj).attr("controllername");
     $.ajax({
-        url: app + "/" + controllername + "/" + actionname,
+        url: app + "/" + currentcontroller + "/" + currentactionname,
         type: "get",
         success: function (data) {
             $("#loading").hide(); $("#main_panel").show();
@@ -32,7 +34,27 @@ function modal(title, message, modal_close, modal_save, submiturl) {
     $("#modal_save").attr("submiturl", submiturl);
     $("#modal").show();
 }
+function modal_update(id, title, modal_close, modal_save, updateurl) {
+    updateurl = "/" + updateurl + "/";
+    $.ajax({
+        url: app + updateurl + id,
+        type: 'get',
+        async: false,
+        success: function (data) {
+            $("#modal_body").html("");
+            $("#modal_title").html(title);
+            $("#modal_body").append(data);
+            $("#modal_close").html(modal_close);
+            $("#modal_save").html(modal_save);
+            $("#modal_save").attr("submiturl", updateurl);
+            $("#modal").show();
+        },
+        error: function () {
+            dialog("失败", "本次修改失败")
+        }
+    });
 
+}
 function modal_save()
 {
     $("#modal_form").validate();
@@ -43,6 +65,16 @@ function modal_save()
         success: function (data)
         {
             dialog(data.title, data.message);
+        }
+    });
+    $.ajax({
+        url: app + "/" + currentcontroller + "/" + currentactionname,
+        type: "get",
+        success: function (data) {
+            $("#loading").hide(); $("#main_panel").show();
+            $("#main_panel").html(data);
+        },
+        error: function () {
         }
     });
 }

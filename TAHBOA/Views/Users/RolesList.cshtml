@@ -53,24 +53,6 @@
     }
     function updatetrole(id, name) {
 
-        $.ajax({
-            url: app + "/users/UpdateRole/" + id,
-            type: 'get',
-            async: false,
-            success: function (data) {
-                $("#modal_body").html("");
-                $("#modal_title").html("修改角色: " + name);
-                $("#modal_body").append(data);
-                $("#modal_close").html("取消");
-                $("#modal_save").html("修改");
-                $("#modal_save").attr("submiturl", "users/UpdateUser/");
-                $("#modal").show();
-            },
-            error: function ()
-            {
-                dialog("失败","本次修改失败")
-            }
-        });
-
+        modal_update(id, "修改角色: " + name, "取消", "修改", "users/UpdateRole");
     }
 </script>

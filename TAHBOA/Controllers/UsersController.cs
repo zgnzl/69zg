@@ -4,6 +4,7 @@ using _69zg.Filter;
 using Dos.ORM;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using TAHB.Model;
 
@@ -14,16 +15,16 @@ namespace TAHBOA.Controllers
     {
 
         #region 用户管理
-        public ActionResult UsersList(string keyword,int pagesize=10,int pageindex=1)
+        public ActionResult UsersList(string keyword, int pagesize = 10, int pageindex = 1)
         {
             WhereClip where = new WhereClip();
             if (!string.IsNullOrEmpty(keyword))
             {
-                where.And(new WhereClip(_userinfo._.name,keyword,QueryOperator.Like));
+                where.And(new WhereClip(_userinfo._.name, keyword, QueryOperator.Like));
                 where.And(new WhereClip(_userinfo._.phone, keyword, QueryOperator.Like));
             }
-           int count= DB.Context.Count<_userinfo>(where);
-            List<_userinfo> models = DB.Context.From<_userinfo>().Where(where).OrderByDescending(c=>c.id).Page(pagesize, pageindex).ToList();
+            int count = DB.Context.Count<_userinfo>(where);
+            List<_userinfo> models = DB.Context.From<_userinfo>().Where(where).OrderByDescending(c => c.id).Page(pagesize, pageindex).ToList();
             ViewBag.models = models;
             InitPages(count, pageindex, pagesize);
             return View();
@@ -59,7 +60,8 @@ namespace TAHBOA.Controllers
             {
                 return Json(new { title = "成功", message = "用户删除成功" });
             }
-            else {
+            else
+            {
                 return Json(new { title = "失败", message = "用户删除失败" });
             }
         }
@@ -111,15 +113,39 @@ namespace TAHBOA.Controllers
         }
         public ActionResult AddRole(_roleinfo model)
         {
-            if (!string.IsNullOrEmpty(model.functionids) &&DB.Context.Insert<_roleinfo>(model) > 0)
+            if (string.IsNullOrEmpty(model.name))
             {
-                return Json(new { title = "成功", message = "成功添加用户：" + model.name });
+                return Json(new { title = "失败", message = "角色名称不能为空：" + model.name });
             }
-            else
+            if (!string.IsNullOrEmpty(model.functionids))
             {
-                return Json(new { title = "失败", message = "未能添加用户：" + model.name });
+                string[] idsarry = model.functionids.Split(new char[] { '_', ',' });
+                model.functionids = string.Join(",", idsarry.Distinct());
+                if (DB.Context.Insert<_roleinfo>(model) > 0)
+                    return Json(new { title = "成功", message = "成功添加角色：" + model.name });
             }
+            return Json(new { title = "失败", message = "未能添加角色：" + model.name });
         }
+
+        public ActionResult UpdateRole(_roleinfo model)
+        {
+            if (string.IsNullOrEmpty(model.name))
+            {
+                List<_functioninfo> functions = DB.Context.From<_functioninfo>().ToList();
+                ViewBag.functions = functions;
+                _roleinfo oldmodel = DB.Context.From<_roleinfo>().Where(c => c.id == model.id).First();
+                return View(oldmodel);
+            }
+            if (!string.IsNullOrEmpty(model.functionids))
+            {
+                string[] idsarry = model.functionids.Split(new char[] { '_', ',' });
+                model.functionids = string.Join(",", idsarry.Distinct());
+                if (DB.Context.Update<_roleinfo>(model) > 0)
+                    return Json(new { title = "成功", message = "成功修改角色：" + model.name });
+            }
+            return Json(new { title = "失败", message = "修改失败角色：" + model.name });
+        }
+
         public ActionResult DelRole(int id)
         {
             if (DB.Context.Delete<_roleinfo>(id) > 0)
