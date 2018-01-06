@@ -78,11 +78,14 @@ function modal_save()
     $("#modal_form").validate();
    
     var submiurl = $("#modal_save").attr("submiturl")
-
-    if (submiurl.indexOf("Contract") >= 0)
-    {
-        $("#modal_body #合同内容").val(encodeURIComponent(CKEDITOR.instances.合同内容.getData()));
+    try {
+        if (submiurl.indexOf("Contract") >= 0) {
+            $("#modal_body #合同内容").val(encodeURIComponent(CKEDITOR.instances.合同内容.getData()));
+        }
     }
+        catch(e)
+        {
+        }
     $.ajax({
         url: app + "/" + submiurl,
         data: $("#modal_form").serialize(),
@@ -128,6 +131,19 @@ function pages(number) {
         type: "post",
         success: function (data) {
             $("#main_panel").html(data); $("#loading").hide(); $("#main_panel").show();
+        }
+    });
+}
+//省市县
+function selectchanger(obj, changeid) {
+    var regioncode = $(obj).find("option:selected").attr("regioncode");
+    var selectcode = $("#selectcode").val();
+    $.ajax({
+        url: app + "/" + currentcontroller + "/GetArea",
+        data: { "parentcode": regioncode, "selectcode": selectcode },
+        type: "post",
+        success: function (data) {
+            $("#" + changeid).html(data);
         }
     });
 }

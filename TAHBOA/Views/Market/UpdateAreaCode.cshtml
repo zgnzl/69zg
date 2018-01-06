@@ -1,0 +1,52 @@
+﻿@using TAHB.Model
+@model 区域代码
+@{
+    Layout = null;
+    List<Area> area = ViewBag.area;
+}
+<input hidden id="id" name="id" value="@Model.id" />
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">代码<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="code" name="code" type="text" value="@Model.code" required="">
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">区域名称<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="area" name="area" type="text" value="@Model.area" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">省<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select id="province" name="province" onchange="selectchanger(this,'city')"  class="form-control m-bot15">
+            @foreach (Area item in area)
+            {
+                if (Model.province == item.RegionName)
+                {
+            <option selected regioncode="@item.RegionCode" value="@item.RegionName">@item.RegionName</option> }
+                else
+                {
+            <option regioncode="@item.RegionCode" value="@item.RegionName">@item.RegionName</option> }
+
+            }
+        </select>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">市<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select id="city" name="city" class="form-control m-bot15">
+            <option selected regioncode="@Model.city" value="@Model.city">@Model.city</option> 
+        </select>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">备足<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="ohter" name="other" type="text" value="@Model.other" required="">
+    </div>
+</div>
+

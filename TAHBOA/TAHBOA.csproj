@@ -158,6 +158,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Area.cs" />
     <Compile Include="Models\statisticsLog.cs" />
     <Compile Include="Models\statisticsUser.cs" />
     <Compile Include="Models\_directories.cs" />
@@ -958,6 +959,12 @@
     <Content Include="Scripts\plugins\wsc\.DS_Store" />
     <Content Include="Scripts\plugins\wsc\LICENSE.md" />
     <Content Include="Scripts\plugins\wsc\README.md" />
+    <Content Include="Views\Market\ContractTypeList.cshtml" />
+    <Content Include="Views\Market\AddContractType.cshtml" />
+    <Content Include="Views\Market\UpdateContractType.cshtml" />
+    <Content Include="Views\Market\AreaCodeList.cshtml" />
+    <Content Include="Views\Market\AddAreaCode.cshtml" />
+    <Content Include="Views\Market\UpdateAreaCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\jquery-file-upload\server\php\files\thumbnail\" />

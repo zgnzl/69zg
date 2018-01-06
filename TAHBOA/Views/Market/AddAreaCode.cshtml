@@ -1,0 +1,47 @@
+﻿@using TAHB.Model
+@{
+    Layout = null;
+    List<Area> area = ViewBag.area;
+}
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">代码<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="code" name="code" type="text" value="" required="">
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">区域名称<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="area" name="area" type="text" value="" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">省<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select id="province" name="province" onchange="selectchanger(this,'city')" class="form-control m-bot15">
+            @foreach (Area item in area)
+            {
+                <option regioncode="@item.RegionCode" value="@item.RegionName">@item.RegionName</option>
+            }
+            </select>
+</div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">市<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select id="city" name="city"   class="form-control m-bot15">
+
+        </select>
+</div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">备足<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="ohter" name="other" type="text" value="" required="">
+    </div>
+</div>
+
+<script>
+
+</script>
