@@ -20,8 +20,8 @@ namespace TAHBOA.Controllers
             WhereClip where = new WhereClip();
             if (!string.IsNullOrEmpty(keyword))
             {
-                where.And(new WhereClip(_userinfo._.name, keyword, QueryOperator.Like));
-                where.And(new WhereClip(_userinfo._.phone, keyword, QueryOperator.Like));
+                where.Or(new WhereClip(_userinfo._.name, keyword, QueryOperator.Like));
+                where.Or(new WhereClip(_userinfo._.phone, keyword, QueryOperator.Like));
             }
             int count = DB.Context.Count<_userinfo>(where);
             List<_userinfo> models = DB.Context.From<_userinfo>().Where(where).OrderByDescending(c => c.id).Page(pagesize, pageindex).ToList();
@@ -100,8 +100,8 @@ namespace TAHBOA.Controllers
             WhereClip where = new WhereClip();
             if (!string.IsNullOrEmpty(keyword))
             {
-                where.And(new WhereClip(_roleinfo._.name, keyword, QueryOperator.Like));
-                where.And(new WhereClip(_roleinfo._.description, keyword, QueryOperator.Like));
+                where.Or(new WhereClip(_roleinfo._.name, keyword, QueryOperator.Like));
+                where.Or(new WhereClip(_roleinfo._.description, keyword, QueryOperator.Like));
             }
             int count = DB.Context.Count<_roleinfo>(where);
             List<_roleinfo> models = DB.Context.From<_roleinfo>().Where(where).OrderByDescending(c => c.id).Page(pagesize, pageindex).ToList();

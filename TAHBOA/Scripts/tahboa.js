@@ -27,8 +27,8 @@ function dialog(title, message) {
     $("#dialog_show").click();
 }
 function modal(title, message, modal_close, modal_save, submiturl) {
-    $("#modal_title").html("" + title); $("#modal_body").html("");
-    $("#modal_body").append($("#" + message).html()); 
+    $("#modal_title").html("" + title); 
+    $("#modal_body").html($("#" + message).html()); 
     $("#modal_close").html("" + modal_close);
     $("#modal_save").html("" + modal_save);
     $("#modal_save").attr("submiturl", submiturl);
@@ -41,9 +41,8 @@ function modal_update(id, title, modal_close, modal_save, updateurl) {
         type: 'get',
         async: false,
         success: function (data) {
-            $("#modal_body").html("");
             $("#modal_title").html(title);
-            $("#modal_body").append(data);
+            $("#modal_body").html(data);
             $("#modal_close").html(modal_close);
             $("#modal_save").html(modal_save);
             $("#modal_save").attr("submiturl", updateurl);
@@ -53,13 +52,39 @@ function modal_update(id, title, modal_close, modal_save, updateurl) {
             dialog("失败", "本次修改失败")
         }
     });
-
 }
+function modal_add( title, modal_close, modal_save, addurl) {
+    updateurl = "/" + addurl + "/";
+    $.ajax({
+        url: app + updateurl,
+        type: 'get',
+        async: false,
+        success: function (data) {
+            $("#modal_title").html(title);
+            $("#modal_body").html(data);
+            $("#modal_close").html(modal_close);
+            $("#modal_save").html(modal_save);
+            $("#modal_save").attr("submiturl", addurl);
+            $("#modal").show();
+        },
+        error: function () {
+            dialog("失败", "本次新增失败")
+        }
+    });
+}
+
 function modal_save()
 {
     $("#modal_form").validate();
+   
+    var submiurl = $("#modal_save").attr("submiturl")
+
+    if (submiurl.indexOf("Contract") >= 0)
+    {
+        $("#modal_body #合同内容").val(encodeURIComponent(CKEDITOR.instances.合同内容.getData()));
+    }
     $.ajax({
-        url: app + "/" + $("#modal_save").attr("submiturl"),
+        url: app + "/" + submiurl,
         data: $("#modal_form").serialize(),
         type: 'post',
         success: function (data)

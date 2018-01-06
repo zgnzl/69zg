@@ -1,23 +1,81 @@
-﻿using System;
+﻿using _69zg.DataContent;
+using _69zg.Filter;
+using Dos.ORM;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using TAHB.Model;
 
 namespace TAHBOA.Controllers
 {
-    public class MarketController : Controller
+    [LoginFilter]
+    public class MarketController : MasterController
     {
-        // GET: Market
-        public ActionResult Index()
+
+        #region 市场业务
+        #region 合同列表
+        public ActionResult ContractList(string keyword, int pagesize = 10, int pageindex = 1)
         {
+            WhereClip where = new WhereClip();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                where.Or(new WhereClip(合同记录._.合同内容, keyword, QueryOperator.Like));
+                where.Or(new WhereClip(合同记录._.合同区域, keyword, QueryOperator.Like));
+                where.Or(new WhereClip(合同记录._.甲方, keyword, QueryOperator.Like));
+            }
+            int count = DB.Context.Count<合同记录>(where);
+            List<合同记录> models = DB.Context.From<合同记录>().Where(where).OrderByDescending(c => c.id).Page(pagesize, pageindex).ToList();
+            List<合同类别> contracttypes = DB.Context.From<合同类别>().ToList();
+            List<区域代码> contracttareas = DB.Context.From<区域代码>().ToList();
+            ViewBag.models = models;
+            ViewBag.contracttypes = contracttypes;
+            ViewBag.contracttareas = contracttareas;
+            InitPages(count, pageindex, pagesize);
             return View();
         }
-        #region 市场业务
-        #region 合同编码设置
-        public ActionResult HTBMSE()
+
+
+        public ActionResult AddContract(合同记录 model)
         {
-            return Content("合同编码设置");
+            if (string.IsNullOrEmpty(model.甲方))
+            {
+                List<合同类别> contracttypes = DB.Context.From<合同类别>().ToList();
+                List<区域代码> contracttareas = DB.Context.From<区域代码>().ToList();
+                ViewBag.contracttypes = contracttypes;
+                ViewBag.contracttareas = contracttareas;
+                return View();
+            }
+            if (DB.Context.Insert<合同记录>(model) > 0)
+                return Json(new { title = "成功", message = "成功添加角色：" + model.甲方 });
+            return Json(new { title = "失败", message = "未能添加角色：" + model.甲方 });
+        }
+
+        public ActionResult UpdateContract(合同记录 model)
+        {
+            if (string.IsNullOrEmpty(model.甲方))
+            {
+                合同记录 oldmodel = DB.Context.From<合同记录>().Where(c => c.id == model.id).First();
+                List<合同类别> contracttypes = DB.Context.From<合同类别>().ToList();
+                List<区域代码> contracttareas = DB.Context.From<区域代码>().ToList();
+                ViewBag.contracttypes = contracttypes;
+                ViewBag.contracttareas = contracttareas;
+                return View(oldmodel);
+            }
+
+            if (DB.Context.Update<合同记录>(model) > 0)
+                return Json(new { title = "成功", message = "成功修改合同甲方：" + model.甲方 });
+            return Json(new { title = "失败", message = "修改失败合同甲方：" + model.甲方 });
+        }
+
+        public ActionResult DelContract(int id)
+        {
+            if (DB.Context.Delete<合同记录>(id) > 0)
+            {
+                return Json(new { title = "成功", message = "合同删除成功" });
+            }
+            else
+            {
+                return Json(new { title = "失败", message = "合同删除失败" });
+            }
         }
         #endregion
         #region 报价系统设置

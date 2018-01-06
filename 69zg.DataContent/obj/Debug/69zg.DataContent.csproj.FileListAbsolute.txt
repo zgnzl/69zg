@@ -13,3 +13,4 @@ E:\TeamFondationServers\69zg\69zg.DataContent\obj\Debug\69zg.DataContent.csprojR
 E:\TeamFondationServers\69zg\69zg.DataContent\obj\Debug\69zg.DataContent.csproj.CoreCompileInputs.cache
 E:\TeamFondationServers\69zg\69zg.DataContent\obj\Debug\69zg.DataContent.dll
 E:\TeamFondationServers\69zg\69zg.DataContent\obj\Debug\69zg.DataContent.pdb
+D:\Git_Asp.net\zg69\69zg.DataContent\obj\Debug\69zg.DataContent.csprojResolveAssemblyReference.cache

@@ -31,3 +31,4 @@ E:\TeamFondationServers\69zg\69zg.Common\obj\Debug\69zg.Common.csprojResolveAsse
 E:\TeamFondationServers\69zg\69zg.Common\obj\Debug\69zg.Common.csproj.CoreCompileInputs.cache
 E:\TeamFondationServers\69zg\69zg.Common\obj\Debug\69zg.Common.dll
 E:\TeamFondationServers\69zg\69zg.Common\obj\Debug\69zg.Common.pdb
+D:\Git_Asp.net\zg69\69zg.Common\obj\Debug\69zg.Common.csprojResolveAssemblyReference.cache

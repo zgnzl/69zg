@@ -2,6 +2,7 @@
 @{
     Layout = null;
     List<_userinfo> models = ViewBag.models;
+    int index = ViewBag.pagesize * (ViewBag.currentpage - 1);
 }
 
 <div class="col-lg-12">
@@ -13,6 +14,7 @@
         <table class="table table-striped table-advance table-hover">
             <tbody>
                 <tr>
+                    <th><i class=""></i>No</th>
                     <th><i class="icon_profile"></i> 名字</th>
                     <th><i class="icon_calendar"></i> 日期</th>
                     <th><i class="icon_calendar"></i> 失效日期</th>
@@ -21,9 +23,10 @@
                     <th><i class="icon_mobile"></i> 电话</th>
                     <th><i class="icon_cogs"></i> 操作</th>
                 </tr>
-                @foreach(_userinfo user in models)
+                @foreach (_userinfo user in models)
                 {
                 <tr>
+                    <td>@(++index)</td>
                     <td>@user.name</td>
                     <td>@user.regtime</td>
                     <td>@user.endtime</td>

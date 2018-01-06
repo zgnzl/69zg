@@ -38,6 +38,7 @@ namespace TAHBOA.Controllers
                     } else
                     {
                         Session["currentuser"] = users;
+                        Session.Timeout = 6*60;
                         result = true;
                     }
                 }

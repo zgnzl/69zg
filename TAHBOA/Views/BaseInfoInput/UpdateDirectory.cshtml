@@ -1,0 +1,44 @@
+﻿@using TAHB.Model
+@model _directories
+@{
+    Layout = null;
+}
+<input name="id" id="id" value="@Model.id" hidden />
+
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">废物类别<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="type" name="type" minlength="5" type="text" value="@Model.type" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cemail" class="control-label col-lg-2">行业来源 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control " id="source" type="text" value="@Model.source" name="source" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="curl" class="control-label col-lg-2">废弃代码</label>
+    <div class="col-lg-10">
+        <input class="form-control " id="code" value="@Model.code" type="text" name="code">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">危险废物 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="explain" value="@Model.explain" name="explain" type="text" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">危险特性 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="character" value="@Model.character" name="character" type="text" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">备注说明 <span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="other" value="@Model.other" name="other" type="text" required="">
+    </div>
+</div>

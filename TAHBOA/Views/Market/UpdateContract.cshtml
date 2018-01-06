@@ -1,0 +1,265 @@
+﻿@using TAHB.Model
+@model 合同记录
+@{
+    Layout = null;
+    List<合同类别> contracttypes = ViewBag.contracttypes;
+    List<区域代码> contracttareas = ViewBag.contracttareas;
+}
+<input hidden id="id" name="id" value="@Model.id" />
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">合同类别<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select id="合同类别" name="合同类别" class="form-control m-bot15">
+            @foreach (var item in contracttypes)
+            {
+                if (Model.合同类别 == item.id)
+                {
+                    <option selected value="@item.id">@item.name</option>
+                }
+                else
+                {
+                <option  value="@item.id">@item.name</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">合同区域<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <select id="合同区域" name="合同区域" class="form-control m-bot15">
+            @foreach (var item in contracttareas)
+            {
+                if (Model.合同区域 == item.id)
+                {
+                    <option selected value="@item.id">@item.area</option>
+                }
+                else
+                {
+                    <option  value="@item.id">@item.area</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">甲方<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="甲方" name="甲方" type="text" value="@Model.甲方" required="">
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">乙方<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="乙方" name="乙方" type="text" value="@Model.乙方" required="">
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">签订地点<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="签订地点" name="签订地点" type="text" value="@Model.签订地点" required="">
+    </div>
+</div>
+
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">签订时间<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control " id="签订时间" name="签订时间" value="@Model.签订时间" required="" />
+        <div id="divDate1" class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><span class="">30</span></td></tr><tr><td><span class="">31</span></td><td><span class="">1</span></td><td><span class="">2</span></td><td><span class="">3</span></td><td><span class="">4</span></td><td><span class="">5</span></td><td><span class="">6</span></td></tr></tbody></table>      </div>    </div>  </div></div><div class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><a>30</a></td></tr><tr><td><a>31</a></td><td><a class="nextD  ">1</a></td><td><a class="nextD  ">2</a></td><td><a class="nextD  ">3</a></td><td><a class="nextD  ">4</a></td><td><a class="nextD  ">5</a></td><td><a class="nextD  ">6</a></td></tr></tbody></table>      </div>    </div>  </div></div>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">合同内容<span class="required">*</span></label>
+    <div class="col-sm-10">
+        <textarea class="form-control ckeditor" id="合同内容" name="合同内容"  rows="6" style="visibility: hidden; display: none;">@HttpUtility.UrlDecode(Model.合同内容)</textarea>
+    </div> 
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">合同生效日期<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="合同生效日期" name="合同生效日期" type="text" value="@Model.合同生效日期" required="">
+        <div id="divDate2" class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><span class="">30</span></td></tr><tr><td><span class="">31</span></td><td><span class="">1</span></td><td><span class="">2</span></td><td><span class="">3</span></td><td><span class="">4</span></td><td><span class="">5</span></td><td><span class="">6</span></td></tr></tbody></table>      </div>    </div>  </div></div><div class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><a>30</a></td></tr><tr><td><a>31</a></td><td><a class="nextD  ">1</a></td><td><a class="nextD  ">2</a></td><td><a class="nextD  ">3</a></td><td><a class="nextD  ">4</a></td><td><a class="nextD  ">5</a></td><td><a class="nextD  ">6</a></td></tr></tbody></table>      </div>    </div>  </div></div>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">合同终止日期<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="合同终止日期" name="合同终止日期" type="text" value="@Model.合同终止日期" required="">
+        <div id="divDate3" class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><span class="">30</span></td></tr><tr><td><span class="">31</span></td><td><span class="">1</span></td><td><span class="">2</span></td><td><span class="">3</span></td><td><span class="">4</span></td><td><span class="">5</span></td><td><span class="">6</span></td></tr></tbody></table>      </div>    </div>  </div></div><div class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><a>30</a></td></tr><tr><td><a>31</a></td><td><a class="nextD  ">1</a></td><td><a class="nextD  ">2</a></td><td><a class="nextD  ">3</a></td><td><a class="nextD  ">4</a></td><td><a class="nextD  ">5</a></td><td><a class="nextD  ">6</a></td></tr></tbody></table>      </div>    </div>  </div></div>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">到期提醒时间<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" hidden id="到期提醒时间" name="到期提醒时间" type="text" value="@Model.到期提醒时间" required="">
+        <div id="divDate4" class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><span class="">30</span></td></tr><tr><td><span class="">31</span></td><td><span class="">1</span></td><td><span class="">2</span></td><td><span class="">3</span></td><td><span class="">4</span></td><td><span class="">5</span></td><td><span class="">6</span></td></tr></tbody></table>      </div>    </div>  </div></div><div class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><a>30</a></td></tr><tr><td><a>31</a></td><td><a class="nextD  ">1</a></td><td><a class="nextD  ">2</a></td><td><a class="nextD  ">3</a></td><td><a class="nextD  ">4</a></td><td><a class="nextD  ">5</a></td><td><a class="nextD  ">6</a></td></tr></tbody></table>      </div>    </div>  </div></div>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">结束提醒日期<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="结束提醒日期" name="结束提醒日期" type="text" value="@Model.结束提醒日期" required="">
+        <div id="divDate5" class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><span class="">30</span></td></tr><tr><td><span class="">31</span></td><td><span class="">1</span></td><td><span class="">2</span></td><td><span class="">3</span></td><td><span class="">4</span></td><td><span class="">5</span></td><td><span class="">6</span></td></tr></tbody></table>      </div>    </div>  </div></div><div class="calendar">  <div class="calMain">    <div class="calTitle">      <a class="prevMonth"></a><span class="t_date"><span class="currentYearText"><a class="currentYear">2017</a>年</span><span class="currentMonthText"><a class="currentMonth">12</a>月</span></span><a class="nextMonth"></a>    </div>    <div class="calContent">      <div class="reserve">      </div>      <div class="enabled"><table class="tabD"><tbody><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr><td><a class="prevD  ">26</a></td><td><a class="prevD  ">27</a></td><td><a class="prevD  ">28</a></td><td><a class="prevD  ">29</a></td><td><a class="prevD  ">30</a></td><td><a>1</a></td><td><a>2</a></td></tr><tr><td><a>3</a></td><td><a>4</a></td><td><a>5</a></td><td><a>6</a></td><td><a>7</a></td><td><a>8</a></td><td><a>9</a></td></tr><tr><td><a>10</a></td><td><a>11</a></td><td><a>12</a></td><td><a>13</a></td><td><a>14</a></td><td><a>15</a></td><td><a>16</a></td></tr><tr><td><a>17</a></td><td><a>18</a></td><td><a>19</a></td><td><a>20</a></td><td><a>21</a></td><td><a>22</a></td><td><a>23</a></td></tr><tr><td><a>24</a></td><td><a>25</a></td><td><a>26</a></td><td><a>27</a></td><td><a>28</a></td><td><a class=" current">29</a></td><td><a>30</a></td></tr><tr><td><a>31</a></td><td><a class="nextD  ">1</a></td><td><a class="nextD  ">2</a></td><td><a class="nextD  ">3</a></td><td><a class="nextD  ">4</a></td><td><a class="nextD  ">5</a></td><td><a class="nextD  ">6</a></td></tr></tbody></table>      </div>    </div>  </div></div>
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">到期提醒<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" style="display:none" id="是否到期提醒" name="是否到期提醒" type="text" value="" required="">
+        <div class="switch has-switch"><div onclick="expireremind(this)" class="@(Model.是否到期提醒==1?"switch-on":"switch-off") switch-animate"><input type="checkbox" checked="" data-toggle="switch"><span class="switch-left">ON</span><label>&nbsp;</label><span class="switch-right">OFF</span></div></div>
+
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">甲方法人代表<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="甲方法人代表" name="甲方法人代表" type="text" value="@Model.甲方法人代表" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">已方法人代表<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="已方法人代表" name="已方法人代表" type="text" value="@Model.已方法人代表" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">甲方联系人<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="甲方联系人" name="甲方联系人" type="text" value="@Model.甲方联系人" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">乙方联系人<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="乙方联系人" name="乙方联系人" type="text" value="@Model.乙方联系人" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">甲方联系电话<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="甲方联系电话" name="甲方联系电话" type="text" value="@Model.甲方联系电话" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">乙方联系电话<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="乙方联系电话" name="乙方联系电话" type="text" value="@Model.乙方联系电话" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">甲方传真<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="甲方传真" name="甲方传真" type="text" value="@Model.甲方传真" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">乙方传真<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="乙方传真" name="乙方传真" type="text" value="@Model.乙方传真" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">甲方邮箱<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="甲方邮箱" name="甲方邮箱" type="text" value="@Model.甲方邮箱" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">乙方邮箱<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="乙方邮箱" name="乙方邮箱" type="text" value="@Model.乙方邮箱" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">甲方注册地<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="甲方注册地" name="甲方注册地" type="text" value="@Model.甲方注册地" required="">
+    </div>
+</div>
+<div class="form-group ">
+    <label for="cname" class="control-label col-lg-2">乙方注册地<span class="required">*</span></label>
+    <div class="col-lg-10">
+        <input class="form-control" id="乙方注册地" name="乙方注册地" type="text" value="@Model.乙方注册地" required="">
+    </div>
+</div>
+<script>
+
+    CKEDITOR.replace('合同内容');
+
+    function expireremind(obj) {
+        if ($(obj).hasClass("switch-on")) {
+            $("#是否到期提醒").val(1); $(obj).removeClass("switch-on").addClass("switch-off");
+        } else {
+            $("#是否到期提醒").val(0); $(obj).removeClass("switch-off").addClass("switch-on");
+        }
+    };
+    $("#签订时间").calendar({
+        controlId: "divDate1",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+        speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+        complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+        readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+        upperLimit: NaN,                               // 日期上限，默认：NaN(不限制)
+
+        lowerLimit: new Date()
+    });
+    $("#合同生效日期").calendar({
+        controlId: "divDate2",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+        speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+        complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+        readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+        upperLimit: NaN,                               // 日期上限，默认：NaN(不限制)
+
+        lowerLimit: new Date()
+    });
+    $("#合同终止日期").calendar({
+        controlId: "divDate3",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+        speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+        complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+        readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+        upperLimit: NaN,                               // 日期上限，默认：NaN(不限制)
+
+        lowerLimit: new Date()
+    });
+    $("#到期提醒时间").calendar({
+        controlId: "divDate4",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+        speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+        complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+        readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+        upperLimit: NaN,                               // 日期上限，默认：NaN(不限制)
+
+        lowerLimit: new Date()
+    });
+    $("#结束提醒日期").calendar({
+        controlId: "divDate5",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+        speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+        complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+        readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+        upperLimit: NaN,                               // 日期上限，默认：NaN(不限制)
+
+        lowerLimit: new Date()
+    });
+</script>
